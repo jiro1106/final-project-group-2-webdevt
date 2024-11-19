@@ -1,0 +1,125 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #35393c;
+    font-family: "Outfit", serif;
+    color: white;
+    font-weight: 700;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+p {
+    margin-right: 20px;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.drop-down {
+    position: relative;
+    display: inline-block;
+}
+
+button {
+    border: 2px solid #000;
+    color: #000;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-flex;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    border-color: #397266;
+}
+
+.drop-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    min-width: 160px;
+    max-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+.drop-down:hover .drop-content {
+    display: block;
+}
+
+.drop-content a {
+    display: block;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.drop-content a:hover {
+    background-color: #5da399;
+    color: white;
+}
+
+.button-87 {
+    margin: 10px;
+    padding: 15px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: 0px;
+    font-weight: 700;
+    box-shadow: 0px 0px 14px -7px #397266;
+    background-image: linear-gradient(45deg, #397266 0%, #9fb3af 51%, #397266 100%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-87:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.button-87:active {
+    transform: scale(0.95);
+}
