@@ -1,0 +1,123 @@
+.wrapper{
+    width: 700px;
+    height: 997px;
+    background: #fff;
+    justify-content: center;
+    display: flex;
+}
+
+.wrapper h1{
+    text-align: center;
+    margin-bottom: 220px;
+    margin-top: 30px;
+}
+
+.wrapper .input-box{
+    position: relative;
+    width: 600px;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background-color: #eaeaea;
+    border: none;
+    outline: none;
+    border: 2px solid #eaeaea;
+    border-radius: 15px;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box .icon{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+}
+
+.wrapper .forgot{
+    display: flex;
+    font-size: 14.5px;
+    margin: -15px 15px 15px;
+}
+
+.wrapper .forgot a{
+    text-decoration: none;
+    color: #000;
+}
+
+.wrapper .forgot a:hover{
+    text-decoration: underline;
+}
+
+.wrapper .login{
+    width: 100%;
+    height: 60px;
+    background: #35393c;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+}
+
+.wrapper .google button{
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+    height: 60px;
+    outline: none;
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.google .googleicon{
+    position: absolute;
+    left: 20px;
+    top: 48%;
+    transform: translateY(-50%);
+    font-size: 35px;
+}
+
+.wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.register-link button{
+    position: relative;
+    margin-top: 5px;
+    width: 150px;
+    height: 30px;
+    outline: none;
+    border-radius: 13px;
+    border: none;
+    background-color: #5da399;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.host-login{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.host-login a{
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+}
+
+.host-login a:hover{
+    text-decoration: underline;
+}

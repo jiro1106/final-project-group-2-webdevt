@@ -1,0 +1,13 @@
+body {
+    background-image: url('./components/assets/background.png');
+    background-position: center;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
