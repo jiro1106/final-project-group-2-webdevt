@@ -10,7 +10,7 @@ export const Navbar = () => {
             <p>XTRAVAGALA</p>
             <div className="right-section">
                 <ul>
-                    <li>Home</li>
+                    <li><Link to='/' className='hmtbn'>Home</Link></li>
                     <li>Services</li>
                     <li>About Us</li>
                     <li>Contact Us</li>
