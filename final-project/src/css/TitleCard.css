@@ -1,0 +1,35 @@
+/* Flexbox container for the cards */
+.title-card-container {
+    margin-top:2rem;
+    display: flex;               
+    justify-content: center;  
+    align-items: center;         
+    gap: 20px;                   
+    flex-wrap: nowrap;           
+    padding: 20px;
+    width: 100%;                 
+    box-sizing: border-box;      
+    overflow-x: auto;            
+  }
+  
+  .title-card {
+    border: 2px solid #397266;
+    padding: 20px;
+    border-radius: 1.3rem;
+    width: 13rem;                
+    height: 10rem;
+    text-align: center;
+    flex-shrink: 0;              
+  }
+  
+  .title-card h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    .title-card {
+      width: 150px;  /* Smaller width for mobile devices */
+    }
+  }

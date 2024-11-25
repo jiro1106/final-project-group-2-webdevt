@@ -1,0 +1,112 @@
+/* Container styling for the About section */
+.container3 {
+    text-align: center;
+    padding: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+    
+  }
+  
+.about-h1{
+    font-family: Outfit,"serif";
+    font-weight:400;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+.team-h1{
+    font-family: Outfit,"serif";
+    font-weight:400;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+  
+.carousel-images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+.carousel-image {
+    width: 50%;  /* Each image takes up one-third of the space */
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+  
+  /* Styling for the previous image */
+.prev-image {
+    opacity: 0.5;
+    transform: translateX(-100%);
+}
+  
+  /* Styling for the current image */
+.current-image {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 1;
+}
+  
+  /* Styling for the next image */
+.next-image {
+    opacity: 0.5;
+    transform: translateX(100%);
+}
+  
+  /* Arrow buttons */
+.arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    z-index: 2;
+}
+  
+.arrow:hover {
+    color: #007bff;
+}
+  
+.arrow.prev {
+    position: absolute;
+    left: 10px;
+}
+  
+.arrow.next {
+    position: absolute;
+    right: 10px;
+}
+
+.persons{
+    margin-top:3rem;
+    display:flex;
+    justify-content: space-evenly;
+    align-items:center ;
+    gap:1rem;
+    flex-wrap:wrap;
+}
+.person-img{
+    width: 200px;      /* Width of the circle */
+    height: 200px;     /* Height of the circle */
+    background:rgb(194, 194, 194); /* Circle color */
+    border-radius: 50%;  /* Makes the shape a circle */
+    
+  }
+
+.team-h2{
+  font-weight:400;
+  
+}

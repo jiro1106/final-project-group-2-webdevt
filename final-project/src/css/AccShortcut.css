@@ -1,0 +1,51 @@
+.accShortcut-container{
+    margin-top:2rem;
+    background:#35393c;
+    height:68vh;
+    
+    
+  }
+.accShortcut-items{
+    position: absolute;
+    text-align: center;
+    margin-left:11rem;
+    margin-top:5rem;
+    
+}
+.accShortcut-text{
+    color:white;
+    font-family: "Outfit", serif;
+    
+    
+} 
+
+.accShortcut-h1{
+    font-size: 3.3rem;
+    line-height:2rem;
+}
+
+  .accShortcut-logo{
+    display:flex;
+    width:100%;
+    max-width: 100%;
+    width:40rem;
+    height:20rem;
+    float:right;
+    margin-top:4rem;
+    margin-bottom:3rem;
+    margin-right:8rem;
+    border-radius: 0.2rem;
+  }
+
+.btn-createAcc{
+    border:none;
+    background-color: #397266;
+    width:15rem;
+    padding: 1rem;
+    font-size:1rem;
+    justify-content: center;
+    color:white;
+    margin-top:1rem;
+
+}
+
