@@ -5,7 +5,7 @@ import About from './components/About';
 import './App.css';
 import homepage from './assets/homepage.png';
 import LoginForm from './components/LoginForm';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 function App() {
