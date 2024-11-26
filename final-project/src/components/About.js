@@ -30,7 +30,7 @@ const About = () => {
 
   return (
     <div className="about-container">
-      <h1 className="about-h1">What is XTAVAGALA?</h1>
+      <h1 className="about-h1">What is XTRAVAGALA?</h1>
       <div className="carousel">
         <button className="arrow prev" onClick={prevSlide}>
           &#8592; {/* Left arrow */}
