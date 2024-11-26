@@ -11,9 +11,9 @@ export const Navbar = () => {
             <div className="right-section">
                 <ul>
                     <li><Link to='/' className='hmtbn'>Home</Link></li>
-                    <li>Services</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
+                    <li><Link to= '/services'>Services</Link></li>
+                    <li><Link to='/about'>About Us</Link></li>
+                    <li><Link to='/contact'>Contact Us</Link></li>
                 </ul>
                 <div className="drop-down">
                     <button className="button-87">Log In</button>
