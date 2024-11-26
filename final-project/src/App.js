@@ -5,7 +5,7 @@ import About from './components/About';
 import {Contact} from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
-import homepage from './assets/homepage.png';
+import { Thumbnail } from './components/Thumbnail';
 import LoginForm from './components/LoginForm';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -22,10 +22,7 @@ function App() {
         <Navbar /> 
         </header>
         <div className="container1">
-          <img src={homepage} alt='' className='background1'/>
-            <div className="source-button">
-            <button className='button-59'>Services Provided</button>
-            </div>
+          <Thumbnail/>
         </div>
         <div className="container2">
           <TitleCard />
