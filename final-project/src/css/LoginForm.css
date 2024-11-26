@@ -2,8 +2,8 @@
     width: 700px;
     height: 997px;
     background: #fff;
-    justify-content: center;
-    display: flex;
+    justify-content: right;
+    display: flexbox;
 }
 
 .wrapper h1{
