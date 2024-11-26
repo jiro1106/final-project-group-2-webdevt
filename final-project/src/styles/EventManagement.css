@@ -1,0 +1,66 @@
+/* Event Management Container */
+.event-management {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  /* Header */
+  .event-management h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Button */
+  .event-management button {
+    background-color: #378280;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .event-management button:hover {
+    background-color: #2b6664;
+  }
+  
+  /* List of Events */
+  .event-management ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .event-management li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Action Buttons (Delete/Cancel) */
+  .event-management li button {
+    background-color: #d9534f;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .event-management li button:hover {
+    background-color: #b52a25;
+  }
+  
