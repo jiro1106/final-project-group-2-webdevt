@@ -4,11 +4,6 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import MenuPage from './components/MenuPage';
 import EventHostLogin from './components/EventHostLogin';
 import CreateForm from  './components/CreateForm';
-import LoginPage from "./components/LoginPage";
-import Dashboard from "./components/Dashboard";
-import EventManagement from "./components/EventManagement";
-import UserManagement from "./components/UserManagement";
-import React, { useState } from "react";
 
 
 function App() {
@@ -19,6 +14,9 @@ function App() {
         <BrowserRouter>
         <main>
         <Routes>
+        <Route path='/about' element={<AboutPage/>}/>
+        <Route path='/services' element={<ServicePage/>}/>
+        <Route path='/contact' element={<ContactPage/>}/>
          <Route path='/user' element={<LoginForm/>}/>
          <Route path='/' element={<MenuPage/>}/>
          <Route path='/event-host' element={<EventHostLogin/>}/>
