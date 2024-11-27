@@ -3,6 +3,7 @@ import '../css/EventHostLogin.css';
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const EventHostLogin = () => {
     return (
@@ -33,11 +34,13 @@ const EventHostLogin = () => {
 
                 <div className='register-link'>
                     <p>Don't have an account? </p>
+                    <Link to="/CreateForm">
                     <button type='button' className='create-acc'>Create New</button>
+                    </Link>
                 </div>
 
                 <div className='host-click-login'>
-                    <p>Want to login as user? <a href='#/'>Click here</a></p>
+                    <p>Want to login as user? <a href='/user'>Click here</a></p>
                 </div>
             </form>
         </div>

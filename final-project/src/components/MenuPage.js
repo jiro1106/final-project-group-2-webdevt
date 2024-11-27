@@ -4,10 +4,14 @@ import About from './About';
 import {Contact} from './Contact';
 import Footer from './Footer';
 import { Thumbnail } from './Thumbnail';
+import { Navbar } from './Navbar';
 
 const MenuPage = () => {
     return (
         <div className='main-page'>
+          <header className="App-header">
+        <Navbar /> 
+        </header>
         <div className="container1">
         <Thumbnail/>
       </div>

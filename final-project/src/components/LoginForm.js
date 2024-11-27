@@ -42,7 +42,7 @@ const LoginForm = () => {
                 </div>
 
                 <div className='user-click-login'>
-                    <p>Want to host events? <a href='#/'>Click here</a></p>
+                    <p>Want to host events? <a href='/event-host'>Click here</a></p>
                 </div>
             </form>
         </div>

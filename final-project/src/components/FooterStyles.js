@@ -1,6 +1,6 @@
 // components/FooterStyles.js
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Box = styled.div`
     padding: 5% 2.5%;
