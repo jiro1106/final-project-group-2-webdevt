@@ -1,5 +1,5 @@
-.user-login{
-    background-image: url('../assets/background.png');
+.host-login{
+    background-image: url('../assets/eventhostbackground.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -125,17 +125,17 @@
     justify-content: center;
 }
 
-.user-click-login {
+.host-click-login {
     text-align: center;
     margin-top: 20px;
 }
 
-.user-click-login a {
+.host-click-login a {
     text-decoration: none;
     color: #000;
     font-weight: 700;
 }
 
-.user-click-login a:hover {
+.host-click-login a:hover {
     text-decoration: underline;
 }

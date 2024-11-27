@@ -1,18 +1,15 @@
 import React from 'react';
-import '../css/LoginForm.css';
+import '../css/EventHostLogin.css';
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 
-
-
-
-const LoginForm = () => {
+const EventHostLogin = () => {
     return (
-        <div className="user-login">
+        <div className="host-login">
         <div className='wrapper'>
             <form action="">
-                <h1>USER LOGIN</h1>
+                <h1>EVENT HOST LOGIN</h1>
                 <div className='input-box'>
                     <input type='text' placeholder='Email' required />
                     <MdEmail className='icon' />
@@ -39,8 +36,8 @@ const LoginForm = () => {
                     <button type='button' className='create-acc'>Create New</button>
                 </div>
 
-                <div className='user-click-login'>
-                    <p>Want to host events? <a href='#/'>Click here</a></p>
+                <div className='host-click-login'>
+                    <p>Want to login as user? <a href='#/'>Click here</a></p>
                 </div>
             </form>
         </div>
@@ -48,4 +45,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default EventHostLogin;

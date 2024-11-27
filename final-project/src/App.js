@@ -3,6 +3,7 @@ import './App.css';
 import LoginForm from './components/LoginForm';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MenuPage from './components/MenuPage';
+import EventHostLogin from './components/EventHostLogin';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
          <Route path='/user' element={<LoginForm/>}/>
          <Route path='/' element={<MenuPage/>}/>
+         <Route path='/event-host' element={<EventHostLogin/>}/>
         </Routes>
         </main>
         </BrowserRouter>
