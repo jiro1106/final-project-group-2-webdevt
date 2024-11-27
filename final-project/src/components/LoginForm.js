@@ -3,7 +3,7 @@ import '../css/LoginForm.css';
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
-
+import { Link } from "react-router-dom";
 
 
 
@@ -36,7 +36,9 @@ const LoginForm = () => {
 
                 <div className='register-link'>
                     <p>Don't have an account? </p>
+                    <Link to="/CreateForm">
                     <button type='button' className='create-acc'>Create New</button>
+                    </Link>
                 </div>
 
                 <div className='user-click-login'>

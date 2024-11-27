@@ -12,7 +12,7 @@ export const AccShortcut = () => {
                 <h1 className= "accShortcut-h1">Your Moments</h1>
                 <h1 className= "accShortcut-h1">Start Here!</h1>
             </div>
-            <Link to="/user">
+            <Link to="/CreateForm">
             <button className="btn-createAcc">Create an Account </button>
             </Link>
         </div>

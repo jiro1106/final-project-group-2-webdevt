@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MenuPage from './components/MenuPage';
 import EventHostLogin from './components/EventHostLogin';
+import CreateForm from  './components/CreateForm';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
          <Route path='/user' element={<LoginForm/>}/>
          <Route path='/' element={<MenuPage/>}/>
          <Route path='/event-host' element={<EventHostLogin/>}/>
+         <Route path='/CreateForm' element={<CreateForm/>}/>
         </Routes>
         </main>
         </BrowserRouter>
