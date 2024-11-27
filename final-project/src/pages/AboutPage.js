@@ -7,6 +7,7 @@ import slideshow4 from "../assets/slideshow4.png";
 import slideshow5 from "../assets/slideshow5.png";
 import slideshow6 from "../assets/slideshow6.png";
 import slideshow7 from "../assets/slideshow7.png";
+import { Navbar } from '../components/Navbar';
 
 const images = [slideshow1, slideshow2, slideshow3,slideshow4, slideshow5, slideshow6, slideshow7];
 
@@ -25,6 +26,9 @@ export const AboutPage = () => {
 
   return (
     <div className="about-page-container">
+      <header className="App-header">
+        <Navbar /> 
+        </header>
       <div className="about-page">
         <h1 className="aboutp-header">About XTRAVAGALA</h1>
         <div className="carousel">

@@ -4,6 +4,18 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import MenuPage from './components/MenuPage';
 import EventHostLogin from './components/EventHostLogin';
 import CreateForm from  './components/CreateForm';
+import LoginPage from "./components/LoginPage";
+import Dashboard from "./components/Dashboard";
+import EventManagement from "./components/EventManagement";
+import UserManagement from "./components/UserManagement";
+import React, { useState } from "react";
+import {AboutPage} from "./pages/AboutPage";
+import {ServicePage} from "./pages/ServicesPage";
+import {ContactPage} from "./pages/ContactPage";
+
+
+
+
 
 
 function App() {
