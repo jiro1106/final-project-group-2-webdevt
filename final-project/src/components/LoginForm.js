@@ -9,6 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const LoginForm = () => {
     return (
+        <div className="user-login">
         <div className='wrapper'>
             <form action="">
                 <h1>USER LOGIN</h1>
@@ -42,6 +43,7 @@ const LoginForm = () => {
                     <p>Want to host events? <a href='#/'>Click here</a></p>
                 </div>
             </form>
+        </div>
         </div>
     );
 };
