@@ -114,7 +114,7 @@ const EventHostManageEvents = () => {
 
   return (
     <div className="host-manageEvent">
-      <h2>Manage Events</h2>
+      <h2 className="host-manage-h2">Manage Events</h2>
       <table>
         <thead>
           <tr>
@@ -134,7 +134,7 @@ const EventHostManageEvents = () => {
             <tr key={index}>
               <td>
                 {editedEventIndex === index ? (
-                  <input
+                  <input className="host-manage-inputbox"
                     type="text"
                     value={formData.title || ''}
                     onChange={(e) => handleInputChange(e, 'title')}
@@ -145,7 +145,7 @@ const EventHostManageEvents = () => {
               </td>
               <td>
                 {editedEventIndex === index ? (
-                  <input
+                  <input className="host-manage-inputbox"
                     type="date"
                     value={formData.startDate || ''}
                     onChange={(e) => handleInputChange(e, 'startDate')}
@@ -157,7 +157,7 @@ const EventHostManageEvents = () => {
               </td>
               <td>
                 {editedEventIndex === index ? (
-                  <input
+                  <input className="host-manage-inputbox"
                     type="time"
                     value={formData.startTime || ''}
                     onChange={(e) => handleInputChange(e, 'startTime')}
@@ -168,7 +168,7 @@ const EventHostManageEvents = () => {
               </td>
               <td>
                 {editedEventIndex === index ? (
-                  <input
+                  <input className="host-manage-inputbox"
                     type="date"
                     value={formData.endDate || ''}
                     onChange={(e) => handleInputChange(e, 'endDate')}
@@ -180,7 +180,7 @@ const EventHostManageEvents = () => {
               </td>
               <td>
                 {editedEventIndex === index ? (
-                  <input
+                  <input className="host-manage-inputbox"
                     type="time"
                     value={formData.endTime || ''}
                     onChange={(e) => handleInputChange(e, 'endTime')}
@@ -201,7 +201,7 @@ const EventHostManageEvents = () => {
               </td>
               <td>
                 {editedEventIndex === index ? (
-                  <input
+                  <input className="host-manage-inputbox"
                     type="text"
                     value={formData.location || ''}
                     onChange={(e) => handleInputChange(e, 'location')}
@@ -212,7 +212,7 @@ const EventHostManageEvents = () => {
               </td>
               <td>
                 {editedEventIndex === index ? (
-                  <input
+                  <input className="host-manage-inputbox"
                     type="number"
                     value={formData.price || ''}
                     onChange={(e) => handleInputChange(e, 'price')}
@@ -226,8 +226,8 @@ const EventHostManageEvents = () => {
                   <button onClick={handleSaveEvent}>Save</button>
                 ) : (
                   <>
-                    <button onClick={() => handleEditEvent(index)}>Edit</button>
-                    <button onClick={() => handleDeleteEvent(index)}>Delete</button>
+                    <button className="host-edit-btn" onClick={() => handleEditEvent(index)}>Edit</button>
+                    <button className="host-edit-btn" onClick={() => handleDeleteEvent(index)}>Delete</button>
                   </>
                 )}
               </td>
@@ -238,7 +238,7 @@ const EventHostManageEvents = () => {
       {Object.keys(errors).length > 0 && editedEventIndex !== null && (
         <div className="errors">
           {Object.values(errors).map((error, idx) => (
-            <p key={idx} style={{ color: 'red' }}>{error}</p>
+            <p classname="host-manage-p" key={idx} style={{ color: 'red' }}>{error}</p>
           ))}
         </div>
       )}
