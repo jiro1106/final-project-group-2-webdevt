@@ -4,8 +4,13 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const LoginForm = () => {
+
+    const navigate = useNavigate(); 
+
+
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
 
@@ -31,6 +36,7 @@ const LoginForm = () => {
             return;
         }
         alert('Form submitted successfully!');
+        navigate('/user-menu'); 
     };
 
     return (

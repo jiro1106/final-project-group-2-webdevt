@@ -13,13 +13,11 @@ import {AboutPage} from "./pages/AboutPage";
 import {ServicePage} from "./pages/ServicesPage";
 import {ContactPage} from "./pages/ContactPage";
 
-
-
-
-
 import EventHostMenu from './functions_components/EventHostMenu';
 import AddEvent from './functions_components/EventHostAddEvent';
 import ManageEvent from './functions_components/EventHostManageEvents';
+
+import UserMenu from './functions_components/UserMenu';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -52,6 +50,8 @@ function App() {
           path="/users"
           element={isLoggedIn ? <UserManagement /> : <Navigate to="/" />}
         />
+          {/*Nested routes*/}
+          <Route path='/user-menu' element={<UserMenu/>}/>
           {/*Nested routes*/}
           <Route path='/event-host-menu' element={<EventHostMenu/>}/>
           {/*Nested routes*/}
