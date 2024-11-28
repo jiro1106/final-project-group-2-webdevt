@@ -5,10 +5,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MenuPage from './components/MenuPage';
 import EventHostLogin from './components/EventHostLogin';
 import CreateForm from  './components/CreateForm';
-
+import EventHostMenu from './functions_components/EventHostMenu';
+import AddEvent from './functions_components/EventHostAddEvent';
+import ManageEvent from './functions_components/EventHostManageEvents';
 
 function App() {
-
+  
   return (
       <div className="App">
         <BrowserRouter>
@@ -21,6 +23,11 @@ function App() {
          <Route path='/' element={<MenuPage/>}/>
          <Route path='/event-host' element={<EventHostLogin/>}/>
          <Route path='/CreateForm' element={<CreateForm/>}/>
+          {/*Nested routes*/}
+          <Route path='/event-host-menu' element={<EventHostMenu/>}/>
+          {/*Nested routes*/}
+            <Route path='/addEvent' element={<AddEvent/>}/>
+            <Route path='/manageEvent' element={<ManageEvent/>}/>
         </Routes>
         </main>
         </BrowserRouter>

@@ -3,12 +3,24 @@ import '../css/EventHostLogin.css';
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
+import {useNavigate} from 'react-router-dom';
 
 const EventHostLogin = () => {
+
+    const navigate = useNavigate(); // Initialize the useNavigate hook
+
+    const handleLogin = (e) => {
+        e.preventDefault(); // Prevent default form submission
+        // Add any validation logic here if needed
+        navigate('/event-host-menu'); // Navigate to EventHostMenu
+    };  
+
+
     return (
         <div className="host-login">
         <div className='wrapper'>
-            <form action="">
+            <form onSubmit={handleLogin}>
+            
                 <h1>EVENT HOST LOGIN</h1>
                 <div className='input-box'>
                     <input type='text' placeholder='Email' required />

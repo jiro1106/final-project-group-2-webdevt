@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
     return(
         <div className="navbar">
+            <Link to="/">
             <img src={xtraIcon} alt="" className="logo" />
+            </Link>
             <p>XTRAVAGALA</p>
             <div className="right-section">
                 <ul>

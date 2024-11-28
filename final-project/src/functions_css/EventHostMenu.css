@@ -1,0 +1,13 @@
+.host-buttons{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:3rem;
+}
+
+.eventhost-menu-h1{
+    margin-top:7rem;
+    color:BLACK; 
+    text-align: center;
+}
+
