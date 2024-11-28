@@ -1,0 +1,69 @@
+/* Container styling for the About section */
+.container3 {
+    text-align: center;
+    padding: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  
+  .aboutp-header {
+    font-family: Outfit, "serif";
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    display: block; /* Ensure the element is rendered */
+    visibility: visible; /* Ensure it's visible */
+    z-index: 1; /* Ensure it appears above other elements */
+  }
+  
+  
+  /* Carousel Container */
+  .carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
+    overflow: hidden; /* Ensure content doesn't overflow */
+  }
+  
+  /* Styling for the images within the carousel */
+  .carousel-image {
+    width: 70%; /* Each image takes up 70% of the space */
+    height: auto;
+    object-fit: cover;
+    opacity: 1; /* Images are fully visible by default */
+    transition: none; /* Remove any fade transitions */
+  }
+  
+  /* Arrow buttons */
+  .arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem;
+    transition: color 0.3s;
+  }
+  
+  .arrow:hover {
+    color: #39726f;
+  }
+  
+  .arrow.prev {
+    left: 100px; /* Position the left arrow */
+  }
+  
+  .arrow.next {
+    right: 100px; /* Position the right arrow */
+  }
+  

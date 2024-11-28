@@ -1,0 +1,108 @@
+/* General Reset */
+.dashboard-layout * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Dashboard Layout */
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #397366;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sidebar-links {
+  list-style: none;
+  flex-grow: 1;
+}
+
+.sidebar-links li {
+  margin-bottom: 15px;
+}
+
+.sidebar-links a {
+  color: #fff; /* Text color is white for better contrast */
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  display: block;
+  border-radius: 5px;
+  background-color: #397366; /* Default fill color */
+  outline: 2px solid #fff; /* White outline for highlighting */
+  transition: background-color 0.3s ease, outline 0.3s ease;
+  text-align: center;
+}
+
+.sidebar-links a:hover {
+  background-color: #285d5a; /* Darker shade on hover */
+  outline: 2px solid #fff; /* Keep the white outline on hover */
+}
+
+/* Logout Button */
+.logout-button {
+  background-color: #d9534f; /* Keep visible by default */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, outline 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #b52a25; /* Slightly darker red on hover */
+  outline: 2px solid #fff; /* Keep the white outline on hover */
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+}
+
+.logo2{
+  width: 200px;
+  height: auto;
+  margin-top: -30px;
+  margin-bottom: -10px;
+}

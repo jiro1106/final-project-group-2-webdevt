@@ -1,112 +1,75 @@
 /* Container styling for the About section */
 .container3 {
-    text-align: center;
-    padding: 20px;
-    max-width: 100%;
-    margin: 0 auto;
-    
-  }
-  
-.about-h1{
-    font-family: Outfit,"serif";
-    font-weight:400;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
-  }
+  text-align: center;
+  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
 
-.team-h1{
-    font-family: Outfit,"serif";
-    font-weight:400;
-    font-size: 2rem;
-    margin-bottom: 25px;
-    color: #333;
-  }
-  
+.about-h1 {
+  font-family: Outfit, "serif";
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Carousel Container */
 .carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  overflow: hidden; /* Ensure content doesn't overflow */
 }
-  
-.carousel-images {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-  
+
+/* Styling for the images within the carousel */
 .carousel-image {
-    width: 50%;  /* Each image takes up one-third of the space */
-    height: auto;
-    object-fit: cover;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+  width: 70%; /* Each image takes up 70% of the space */
+  height: auto;
+  object-fit: cover;
+  opacity: 0; /* Start with images hidden */
+  transition: opacity 0.5s ease-in-out; /* Smooth fade transition */
 }
-  
-  /* Styling for the previous image */
-.prev-image {
-    opacity: 0.5;
-    transform: translateX(-100%);
+
+/* Fade-in effect */
+.fade-in {
+  opacity: 1; /* Fully visible */
 }
-  
-  /* Styling for the current image */
-.current-image {
-    opacity: 1;
-    transform: translateX(0);
-    z-index: 1;
+
+/* Fade-out effect */
+.fade-out {
+  opacity: 0; /* Fully hidden */
+  transition: opacity 0.5s ease-in-out;
 }
-  
-  /* Styling for the next image */
-.next-image {
-    opacity: 0.5;
-    transform: translateX(100%);
-}
-  
-  /* Arrow buttons */
+
+/* Arrow buttons */
 .arrow {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #333;
-    cursor: pointer;
-    z-index: 2;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.5rem;
+  transition: color 0.3s;
 }
-  
+
 .arrow:hover {
-    color: #007bff;
+  color: #39726f;
 }
-  
+
 .arrow.prev {
-    position: absolute;
-    left: 10px;
+  left: 100px; /* Position the left arrow */
 }
-  
+
 .arrow.next {
-    position: absolute;
-    right: 10px;
-}
-
-.persons{
-    margin-top:3rem;
-    display:flex;
-    justify-content: space-evenly;
-    align-items:center ;
-    gap:1rem;
-    flex-wrap:wrap;
-}
-.person-img{
-    width: 200px;      /* Width of the circle */
-    height: 200px;     /* Height of the circle */
-    background:rgb(194, 194, 194); /* Circle color */
-    border-radius: 50%;  /* Makes the shape a circle */
-    
-  }
-
-.team-h2{
-  font-weight:400;
-  
+  right: 100px; /* Position the right arrow */
 }

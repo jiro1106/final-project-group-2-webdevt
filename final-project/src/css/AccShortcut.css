@@ -1,6 +1,6 @@
 .accShortcut-container {
   margin-top: 2rem;
-  background: #35393c;
+  background-image: url('/src/assets/accshor.png');
   height: auto; /* Changed to auto for better adaptability */
   min-height: 60vh; /* Ensures the container doesn't shrink on smaller screens */
   display: flex;
@@ -8,6 +8,8 @@
   justify-content: center; /* Centers items */
   position: relative;
   padding: 2rem; /* Adds inner spacing */
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .accShortcut-items {
@@ -36,6 +38,20 @@
   margin-bottom: 4rem;
   margin-right: 8rem;
   border-radius: 0.2rem;
+  position: relative;
+}
+
+.accShortcut-logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%; /* Positioning it to the right of the image */
+  width: 30%; /* You can adjust the width as needed */
+  height: 100%; /* Matches the height of the image */
+  background-color: #36827f; /* Solid color overlay */
+  opacity: 0.5; /* Adjust the opacity to control the intensity */
+  border-radius: 0.2rem;
+  z-index: -1; /* Place the overlay behind the image */
 }
 
 a{
@@ -43,6 +59,7 @@ a{
 }
 
 .btn-createAcc {
+  font-family: "Outfit", serif;
   display: flex; /* Flexbox for alignment */
   align-items: center; /* Vertically center the text */
   justify-content: center; /* Horizontally center the text */
