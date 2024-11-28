@@ -22,6 +22,7 @@ import AddEvent from './functions_components/EventHostAddEvent';
 import ManageEvent from './functions_components/EventHostManageEvents';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
       <div className="App">
