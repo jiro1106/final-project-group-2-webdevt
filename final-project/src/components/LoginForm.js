@@ -68,7 +68,7 @@ const LoginForm = () => {
 
                     <div className='register-link'>
                         <p>Don't have an account? </p>
-                        <Link to="/CreateForm">
+                        <Link to="/CreateFormUser">
                             <button type='button' className='create-acc'>Create New</button>
                         </Link>
                     </div>

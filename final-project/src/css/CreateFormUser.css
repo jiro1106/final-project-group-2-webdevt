@@ -1,0 +1,94 @@
+
+
+.wrapper-create-user {
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    max-height: 700px;
+    background: #2a6d6b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+    margin-left: 620px;
+    margin-top: 270px;
+    border-radius: 20px;
+}
+
+.wrapper-create-user h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 0px;
+}
+
+.wrapper-create-user .input-box-create-user {
+    position: relative;
+    width: 600px;
+    height: 50px;
+    margin: 15px 0;
+}
+
+.input-box-create-user input {
+    width: 100%;
+    height: 100%;
+    background-color: #eaeaea;
+    border: none;
+    outline: none;
+    border: 2px solid #eaeaea;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.input-box-create-user input:focus {
+    border-color: #36827f;
+}
+
+.input-box-create-user .icon-create-user {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #888;
+}
+
+.wrapper-create-user .checkbox-18above-create-user,
+.wrapper-create-user .checkbox-terms-create-user {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.wrapper-create-user .checkbox-18above-create-user label,
+.wrapper-create-user .checkbox-terms-create-user label {
+    font-size: 1rem;
+}
+
+.wrapper-create-user .checkbox-18above-create-user label input,
+.wrapper-create-user .checkbox-terms-create-user label input {
+    margin-right: 0.5rem;
+    accent-color: #36827f;
+}
+
+.wrapper-create-user .create-account-form-user {
+    width: 100%;
+    height: 60px;
+    background: #36827f;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper-create-user .create-account-form-user:hover {
+    background: #2a6d6b;
+}

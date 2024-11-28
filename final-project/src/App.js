@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import {AboutPage} from "./pages/AboutPage";
 import {ServicePage} from "./pages/ServicesPage";
 import {ContactPage} from "./pages/ContactPage";
+import CreateFormUser from "./components/CreateFormUser";
 
 
 
@@ -36,6 +37,7 @@ function App() {
          <Route path='/' element={<MenuPage/>}/>
          <Route path='/event-host' element={<EventHostLogin/>}/>
          <Route path='/CreateForm' element={<CreateForm/>}/>
+         <Route path='/CreateFormUser' element={<CreateFormUser/>}/>
          <Route
           path="/admin"
           element={isLoggedIn ? <Navigate to="/dashboard" /> : <LoginPage onLogin={() => setIsLoggedIn(true)} />}
