@@ -2,13 +2,24 @@ import React from 'react';
 import '../css/CreateForm.css';
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-
+import { FaUser  } from "react-icons/fa";
 
 const CreateAccForm = () => {
     return (
         <div className='wrapper-create'>
             <form action=''>
                 <h1>CREATE NEW USER ACCOUNT</h1>
+                
+                <div className='input-box-create'>
+                    <input type='text' placeholder='First Name' required />
+                    <FaUser  className='icon-create' />
+                </div>
+                
+                <div className='input-box-create'>
+                    <input type='text' placeholder='Last Name' required />
+                    <FaUser  className='icon-create' />
+                </div>
+
                 <div className='input-box-create'>
                     <input type='text' placeholder='Email' required />
                     <MdEmail className='icon-create' />
