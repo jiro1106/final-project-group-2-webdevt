@@ -92,6 +92,7 @@ button:hover {
 }
 
 .drop-content a {
+    text-align: left;
     display: block;
     color: #000;
     padding: 10px 20px;

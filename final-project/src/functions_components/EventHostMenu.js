@@ -38,9 +38,8 @@ const EventHostMenu = () => {
                     </div>
                 </div>
             </div>
-            </div>
-            <h1 className="host-menu-h1">Event Host Menu</h1>
         </div>
+    </div>
     );
 
     

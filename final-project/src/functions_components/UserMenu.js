@@ -44,7 +44,6 @@ const UserMenu = () => {
                 </div>
             </div>
         </div>
-        <h1 className="user-menu-h1">User Menu</h1>
     </div>
   )
 }

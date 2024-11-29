@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../functions_css/EventHostAddEvent.css'; // Import the external CSS
+import EventHostMenu from './EventHostMenu';
 
 const HostAddEvent = () => {
   const [formData, setFormData] = useState({
@@ -10,10 +11,11 @@ const HostAddEvent = () => {
     endTime: '',
     description: '',
     location: '',
-    price: ''
+    price: '',
   });
-
+  
   const [errors, setErrors] = useState({});
+  const [eventPhotos, setEventPhotos] = useState([]); // To store the uploaded event images
 
   // Get today's date in YYYY-MM-DD format
   const today = new Date().toISOString().split('T')[0];
@@ -58,7 +60,7 @@ const HostAddEvent = () => {
 
     // Start time validation
     if (!formData.startTime) {
-      newErrors.startDate = 'Start time is required.';
+      newErrors.startTime = 'Start time is required.';
     }
 
     // End date validation
@@ -92,42 +94,67 @@ const HostAddEvent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log('Event created:', formData);
-      alert('Event successfully created!');
+      // Create the event object including photos
+      const newEvent = { ...formData, photos: [...eventPhotos] };
+  
+      try {
+        // Retrieve existing events from localStorage or initialize an empty array
+        let existingEvents = JSON.parse(localStorage.getItem('eventData')) || [];
+  
+        // Add the new event to the array
+        existingEvents.unshift(newEvent);
+  
+        // Save updated events array to localStorage
+        localStorage.setItem('eventData', JSON.stringify(existingEvents));
+  
+        alert('Event successfully created!');
+        setFormData({
+          title: '',
+          startDate: '',
+          startTime: '',
+          endDate: '',
+          endTime: '',
+          description: '',
+          location: '',
+          price: '',
+        });
+        setEventPhotos([]);
+        setErrors({});
+      } catch (error) {
+        console.error('Error saving to localStorage:', error);
+        alert('There was an issue saving the event. Please try again later.');
+      }
+    }
+  };
+  
 
-      // Retrieve existing events from localStorage, or initialize an empty array if none exist
-      let existingEvents = JSON.parse(localStorage.getItem('eventData'));
-
-      // If existingEvents is not an array, initialize it as an empty array
-      if (!Array.isArray(existingEvents)) {
-        existingEvents = [];
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Validate file size before proceeding
+      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+        alert('Image size exceeds the 5MB limit. Please upload a smaller image.');
+        return;
       }
 
-      // Add the new event to the array
-      existingEvents.push(formData);
-
-      // Save the updated events array back to localStorage
-      localStorage.setItem('eventData', JSON.stringify(existingEvents));
-
-      // Reset the form
-      setFormData({
-        title: '',
-        startDate: '',
-        startTime: '',
-        endDate: '',
-        endTime: '',
-        description: '',
-        location: '',
-        price: ''
-      });
-      setErrors({});
+      // Resize the image to reduce size before converting to base64 (optional)
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // Optionally, resize the image here if needed
+        setEventPhotos((prevPhotos) => [...prevPhotos, reader.result]); // Add image to photos
+      };
+      reader.readAsDataURL(file);
     }
   };
 
   return (
     <div className="host-addEvent">
-      <h2>Create New Event</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 className="host-addEvent-h2">Create New Event</h2>
+      <div className="host-addEvent-container">
+      <header className="App-header">
+        <EventHostMenu />
+      </header>
+      <form className=" host-addEvent-form" onSubmit={handleSubmit}>
         {/* Event Title */}
         <div>
           <label>Event Title:</label>
@@ -205,7 +232,7 @@ const HostAddEvent = () => {
 
         {/* Price */}
         <div>
-          <label>Price (₱):</label>
+          <label>Event Price (₱):</label>
           <input
             type="number"
             name="price"
@@ -215,9 +242,32 @@ const HostAddEvent = () => {
           {errors.price && <small>{errors.price}</small>}
         </div>
 
+        {/* Event Photo (Optional) */}
+        <div>
+          <label>Event Photo (Optional):</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+        </div>
+
+        {/* Display uploaded images */}
+        <div>
+          {eventPhotos.length > 0 && (
+            <div>
+              <h3>Uploaded Photos:</h3>
+              {eventPhotos.map((photo, index) => (
+                <img key={index} src={photo} alt={`Event photo ${index + 1}`} width="100" />
+              ))}
+            </div>
+          )}
+        </div>
+
         {/* Submit Button */}
-        <button type="submit">Create Event</button>
+        <button className = "host-addEvent-btn" type="submit">Create Event</button>
       </form>
+      </div>
     </div>
   );
 };

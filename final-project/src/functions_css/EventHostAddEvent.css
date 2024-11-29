@@ -1,96 +1,161 @@
 /* EventHostAddEvent.css */
 
 .host-addEvent {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-top: 4rem;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.host-addEvent-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-wrap: wrap; 
+  width: 100%;
+}
+
+.host-addEvent h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+.host-addEvent-form {
+  width: 100%;
+  max-width: 800px; 
+  margin-bottom: 2rem;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.host-addEvent label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+  display: block;
+  transition: color 0.3s ease; 
+}
+
+.host-addEvent input[type="text"],
+.host-addEvent input[type="date"],
+.host-addEvent input[type="time"],
+.host-addEvent input[type="number"],
+.host-addEvent textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease; 
+}
+
+.host-addEvent input[type="text"]:focus,
+.host-addEvent input[type="date"]:focus,
+.host-addEvent input[type="time"]:focus,
+.host-addEvent input[type="number"]:focus,
+.host-addEvent textarea:focus {
+  border-color: #5c6bc0; 
+  outline: none;
+}
+
+.host-addEvent textarea {
+  height: 120px;
+}
+
+.host-addEvent input[type="file"] {
+  padding: 10px;
+  background-color: #f3f4f7;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.host-addEvent .error-message {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.host-addEvent .uploaded-photos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.host-addEvent .uploaded-photos img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.host-addEvent-btn {
+  display:flex;
+  justify-content: center;
+  margin-top:2rem;
+  background-color: #1ab427;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 10rem;
+}
+
+
+@media (max-width: 768px) {
+  .host-addEvent-container {
+      flex-direction: column; 
   }
-  
+
+  .host-addEvent-form {
+      width: 90%;
+  }
+
   .host-addEvent h2 {
-    text-align: center;
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
+      font-size: 24px; 
   }
-  
-  .host-addEvent form div {
-    margin-bottom: 15px;
+
+  .host-addEvent button[type="submit"] {
+      width: auto;
   }
-  
-  .host-addEvent label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+}
+
+@media (max-width: 480px) {
+  .host-addEvent {
+      padding: 15px;
   }
-  
+
+  .host-addEvent-form {
+      width: 100%;
+  }
+
   .host-addEvent input[type="text"],
   .host-addEvent input[type="date"],
   .host-addEvent input[type="time"],
   .host-addEvent input[type="number"],
   .host-addEvent textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #333;
+      font-size: 14px; 
   }
-  
-  .host-addEvent textarea {
-    height: 100px;
+
+  .host-addEvent h2 {
+      font-size: 20px; 
   }
-  
-  .host-addEvent button {
-    padding: 10px 20px;
-    background: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
+
+  .host-addEvent button[type="submit"] {
+      font-size: 16px; 
   }
-  
-  .host-addEvent button:hover {
-    background-color: #0056b3;
-  }
-  
-  .host-addEvent small {
-    color: red;
-    font-size: 14px;
-  }
-  
-  .host-addEvent ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .host-addEvent ul li {
-    margin-bottom: 20px;
-    background-color: #f1f1f1;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-  }
-  
-  .host-addEvent ul li p {
-    margin: 5px 0;
-  }
-  
-  .host-addEvent ul li button {
-    padding: 5px 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .host-addEvent ul li button:hover {
-    background-color: #d43f3a;
-  }
-  
+}
