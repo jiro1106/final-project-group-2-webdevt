@@ -1,10 +1,14 @@
-
+.user-form-page{
+    background-color: #5da399; 
+    height: 100vh; 
+    display: flex; 
+}
 
 .wrapper-create-user {
     width: 100%;
     max-width: 700px;
     height: 100%;
-    max-height: 700px;
+    max-height: 750px;
     background: #2a6d6b;
     display: flex;
     justify-content: center;
@@ -12,7 +16,7 @@
     padding: 40px;
     box-sizing: border-box;
     margin-left: 620px;
-    margin-top: 270px;
+    margin-top: 130px;
     border-radius: 20px;
 }
 
@@ -91,4 +95,23 @@
 
 .wrapper-create-user .create-account-form-user:hover {
     background: #2a6d6b;
+}
+
+.profile-picture {
+    width: 300px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height to make it square */
+    margin: 20px 140px; /* Center align the container */
+    display: grid; /* Use flexbox for alignment */
+    border-radius: 10px; /* Optional: Round the corners */
+    background-color: #eaeaea; /* Optional: Background color */
+    padding: 10px;
+}
+
+.profile-picture input {
+    margin-top: 10px;
+    margin-left: 60px;
+}
+
+.profile-picture label{
+    margin-left: 35px;
 }

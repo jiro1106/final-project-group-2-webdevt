@@ -4,15 +4,14 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-
     const navigate = useNavigate(); 
 
-
     const [email, setEmail] = useState('');
-    const [emailError, setEmailError] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -21,22 +20,30 @@ const LoginForm = () => {
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
-        if (!validateEmail(e.target.value)) {
-            setEmailError('Please enter a valid email address');
-        } else {
-            setEmailError('');
-        }
-        setTimeout(() => setEmailError(false), 3000)
+    };
+
+    const handlePasswordChange = (e) => {
+        setPassword (e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!email || emailError) {
-            alert('Please fix the errors before submitting.');
+
+        if (!validateEmail(email)) {
+            setError('Please enter a valid email address.');
+            setTimeout(() => setError(''), 2000);
             return;
         }
-        alert('Form submitted successfully!');
-        navigate('/user-menu'); 
+
+        const accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+        const account = accounts.find(acc => acc.email === email && acc.password === password);
+
+        if (account) {
+            navigate('/user-menu');
+        } else {
+            setError('Invalid email or password. Please try again.');
+            setTimeout(() => setError(''), 2000);
+        }
     };
 
     return (
@@ -53,10 +60,15 @@ const LoginForm = () => {
                             required
                         />
                         <MdEmail className='icon' />
-                        {emailError && <span className="error">{emailError}</span>}
                     </div>
                     <div className='input-box'>
-                        <input type='Password' placeholder='Password' required />
+                        <input
+                            type='password'
+                            placeholder='Password'
+                            value={password}
+                            onChange={handlePasswordChange}
+                            required
+                        />
                         <RiLockPasswordFill className='icon' />
                     </div>
 
@@ -64,6 +76,7 @@ const LoginForm = () => {
                         <a href='#/'>Forgot Password?</a>
                     </div>
 
+                    {error && <p className='error-message'>{error}</p>}
                     <button type='submit' className='login'>Log-in to account</button>
                     <div className='google'>
                         <button type='button'>
@@ -74,7 +87,7 @@ const LoginForm = () => {
 
                     <div className='register-link'>
                         <p>Don't have an account? </p>
-                        <Link to="/CreateFormUser">
+                        <Link to="/CreateFormUser ">
                             <button type='button' className='create-acc'>Create New</button>
                         </Link>
                     </div>

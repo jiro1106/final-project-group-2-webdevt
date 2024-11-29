@@ -3,8 +3,13 @@ import '../css/CreateForm.css';
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUser  } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const CreateForm = () => {
+
+    const navigate = useNavigate();
+    const [IdPicture, setIdPicture] = useState(null);
+    
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -13,6 +18,7 @@ const CreateForm = () => {
         password: '',
         confirmPassword: '',
     });
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,20 +27,38 @@ const CreateForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formData.password === formData.confirmPassword) {
-            // Save to localStorage
-            const accounts = JSON.parse(localStorage.getItem('eventHostAccounts')) || [];
-            accounts.push({ email: formData.email, password: formData.password });
-            localStorage.setItem('eventHostAccounts', JSON.stringify(accounts));
-            alert('Account created successfully!');
-            // Optionally redirect to login page
-        } else {
-            alert('Passwords do not match!');
+        if (formData.password !== formData.confirmPassword) {
+            setError('Passwords do not match!');
+            setTimeout(() => setError(''), 2000);
+            return;
         }
+
+        if (IdPicture) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+            console.log(reader.result);
+        };
+        reader.readAsDataURL(IdPicture);
+        }
+
+        const accounts = JSON.parse(localStorage.getItem('eventHostAccounts')) || [];
+        const existingAccount = accounts.find(acc => acc.email === formData.email);
+
+        if (existingAccount) {
+            setError('An account with this email already exists. Please use a different email.');
+            setTimeout(() => setError(''), 2000);
+            return;
+        }
+
+        accounts.push({ email: formData.email, password: formData.password });
+        localStorage.setItem('eventHostAccounts', JSON.stringify(accounts));
+        alert('Account created successfully!');
+        navigate('/event-host');
     };
 
     return (
-        <div className='wrapper-create'>
+        <div className='form-page'>
+            <div className='wrapper-create'>
             <form onSubmit={handleSubmit}>
                 <h1>CREATE NEW EVENT-HOST ACCOUNT</h1>
                 
@@ -61,23 +85,36 @@ const CreateForm = () => {
                     <RiLockPasswordFill className='icon-create' />
                 </div>
 
+                {error && <p className='error-message'>{error}</p>}
+
+                <div className='ID-picture'>
+                <label className='icon-create-user'>Upload any valid ID picture (required)</label>
+                    <input 
+                        type='file' 
+                        accept='image/*' 
+                        onChange={(e) => setIdPicture(e.target.files[0])}
+                        required
+                    />
+                </div>
+
                 <div className='checkbox-18above-create'>
                     <label>
-                    <input type='checkbox'  required />
-                    above 18 years old
+                    <input type='checkbox' required />
+                    18 years old and Above
                     </label>
                 </div>
                 <div className='checkbox-terms-create'>
                     <label>
                     <input type='checkbox' required />
-                    agree to terms and conditions
+                    Agree to terms and conditions
                     </label>
                 </div>
 
                 <button type='submit' className='create-account-form'>Create account</button>
             </form>
+            </div>
         </div>
     );
-};
+}
 
 export default CreateForm;
