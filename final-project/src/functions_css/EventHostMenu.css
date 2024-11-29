@@ -1,13 +1,32 @@
-.host-buttons{
-    display:flex;
-    justify-content: center;
+.host-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
     align-items: center;
-    gap:3rem;
+    justify-content: space-between;
+    background-color: #35393c;
+    font-family: "Outfit", serif;
+    color: white;
+    font-weight: 700;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    z-index: 1000;
 }
 
-.eventhost-menu-h1{
-    margin-top:7rem;
-    color:BLACK; 
-    text-align: center;
+.host-menu-functions{
+    width:80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 }
 
+.host-menu-ul{
+    gap:40px;
+}
+
+.host-menu-h1{
+    margin-top:6rem;
+}

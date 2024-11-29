@@ -1,0 +1,31 @@
+.user-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #35393c;
+    font-family: "Outfit", serif;
+    color: white;
+    font-weight: 700;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.user-menu-functions{
+    width:80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.user-menu-ul{
+    gap:40px;
+}
+.user-menu-h1{
+    margin-top:6rem;
+}
