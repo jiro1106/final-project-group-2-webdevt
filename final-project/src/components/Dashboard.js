@@ -8,7 +8,7 @@ const Dashboard = ({ onLogout }) => {
       {/* Sidebar Navigation */}
       
       <aside className="sidebar">
-      <img src={logo2} alt="xtra logo" className="logo2" />
+      <img src={logo2} alt="xtra-logo" className="admin-logo" />
         <div className="sidebar-header">Admin Dashboard</div>
         <ul className="sidebar-links">
           <li><a href="#events">Manage Events</a></li>

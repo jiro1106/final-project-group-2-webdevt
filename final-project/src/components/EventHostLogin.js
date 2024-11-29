@@ -34,7 +34,7 @@ const EventHostLogin = () => {
             
                 <h1>EVENT HOST LOGIN</h1>
                 <div className='input-box'>
-                    <input type='text' placeholder='Email' value={email} onChange={(e) => setEmail(e.target .value)} required />
+                    <input type='text' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
                     <MdEmail className='icon' />
                 </div>
                 <div className='input-box'>
