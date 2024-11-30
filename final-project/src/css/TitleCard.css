@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center; /* Center the cards horizontally */
   align-items: center;
-  gap: 20px;
+  gap: 140px;
   flex-wrap: nowrap;
   padding: 0;
   width: 100%;
@@ -30,8 +30,8 @@
 .title-card {
   border: 2px solid #397266;
   border-radius: 1.3rem;
-  width: 13rem;
-  height: 19rem;
+  width: 15rem;
+  height: 22rem;
   text-align: center;
   flex-shrink: 0;
   display: flex;
