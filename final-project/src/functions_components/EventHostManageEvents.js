@@ -11,8 +11,12 @@ const EventHostManageEvents = () => {
   useEffect(() => {
     // Load events from localStorage when the component mounts
     const savedEvents = JSON.parse(localStorage.getItem('eventData')) || [];
-    setEvents(savedEvents);
-  }, []);
+    const currentUserEmail = localStorage.getItem('currentUser Email'); // Get the current user's email
+
+    // Filter events for the current user
+    const userEvents = savedEvents.filter(event => event.accountId === currentUserEmail);
+    setEvents(userEvents);
+}, []);
 
   const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
 

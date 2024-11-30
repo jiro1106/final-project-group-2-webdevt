@@ -94,38 +94,31 @@ const HostAddEvent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      // Create the event object including photos
-      const newEvent = { ...formData, photos: [...eventPhotos] };
-  
-      try {
-        // Retrieve existing events from localStorage or initialize an empty array
-        let existingEvents = JSON.parse(localStorage.getItem('eventData')) || [];
-  
-        // Add the new event to the array
-        existingEvents.unshift(newEvent);
-  
-        // Save updated events array to localStorage
-        localStorage.setItem('eventData', JSON.stringify(existingEvents));
-  
-        alert('Event successfully created!');
-        setFormData({
-          title: '',
-          startDate: '',
-          startTime: '',
-          endDate: '',
-          endTime: '',
-          description: '',
-          location: '',
-          price: '',
-        });
-        setEventPhotos([]);
-        setErrors({});
-      } catch (error) {
-        console.error('Error saving to localStorage:', error);
-        alert('There was an issue saving the event. Please try again later.');
-      }
+        // Create the event object including photos and account identifier
+        const newEvent = { 
+            ...formData, 
+            photos: [...eventPhotos],
+            accountId: localStorage.getItem('currentUser Email') // Assuming you store the user's email upon login
+        };
+
+        try {
+            // Retrieve existing events from localStorage or initialize an empty array
+            let existingEvents = JSON.parse(localStorage.getItem('eventData')) || [];
+
+            // Add the new event to the array
+            existingEvents.unshift(newEvent);
+
+            // Save updated events array to localStorage
+            localStorage.setItem('eventData', JSON.stringify(existingEvents));
+
+            alert('Event successfully created!');
+            // Reset form data
+        } catch (error) {
+            console.error('Error saving to localStorage:', error);
+            alert('There was an issue saving the event. Please try again later.');
+        }
     }
-  };
+};
   
 
   const handleImageChange = (e) => {

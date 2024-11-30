@@ -31,28 +31,47 @@ const CreateFormUser  = () => {
             setTimeout(() => setError(''), 2000);
             return;
         }
-
+    
         if (profilePicture) {
             const reader = new FileReader();
             reader.onloadend = () => {
-            console.log(reader.result);
-        };
-        reader.readAsDataURL(profilePicture);
+                const accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+                const existingAccount = accounts.find(acc => acc.email === formData.email);
+    
+                if (existingAccount) {
+                    setError('An account with this email already exists. Please use a different email.');
+                    setTimeout(() => setError(''), 2000);
+                    return;
+                }
+    
+                accounts.push({ 
+                    email: formData.email, 
+                    password: formData.password, 
+                    profilePicture: reader.result
+                });
+                localStorage.setItem('userAccounts', JSON.stringify(accounts));
+                alert('Account created successfully!');
+                navigate('/user');
+            };
+            reader.readAsDataURL(profilePicture);
+        } else {
+            const accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+            const existingAccount = accounts.find(acc => acc.email === formData.email);
+    
+            if (existingAccount) {
+                setError('An account with this email already exists. Please use a different email.');
+                setTimeout(() => setError(''), 2000);
+                return;
+            }
+    
+            accounts.push({ 
+                email: formData.email, 
+                password: formData.password 
+            });
+            localStorage.setItem('userAccounts', JSON.stringify(accounts));
+            alert('Account created successfully!');
+            navigate('/user');
         }
-
-        const accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
-        const existingAccount = accounts.find(acc => acc.email === formData.email);
-
-        if (existingAccount) {
-            setError('An account with this email already exists. Please use a different email.');
-            setTimeout(() => setError(''), 2000);
-            return;
-        }
-
-        accounts.push({ email: formData.email, password: formData.password });
-        localStorage.setItem('userAccounts', JSON.stringify(accounts));
-        alert('Account created successfully!');
-        navigate('/user');
     };
 
     return (
