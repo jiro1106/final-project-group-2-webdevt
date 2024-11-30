@@ -27,52 +27,41 @@ const Footer = () => {
                 <Row>
                     <Column>
                         <Heading>About Us</Heading>
-                        <FooterLink href="#">
-                            Aim
-                        </FooterLink>
-                        <FooterLink href="#">
-                            Vision
-                        </FooterLink>
-                        <FooterLink href="#">
-                            Mission
-                        </FooterLink>
-                        <FooterLink href="#">
-                            Core Values
+                        <FooterLink href="services">
+                            Our Services
                         </FooterLink>
                     </Column>
                     <Column>
                         <Heading>Services</Heading>
-                        <FooterLink href="#">
+                        <FooterLink href="user">
                             Find Events
                         </FooterLink>
-                        <FooterLink href="#">
+                        <FooterLink href="event-host">
                             Become a Host
                         </FooterLink>
-                        <FooterLink href="#">
+                        <FooterLink href="contact">
                             Contact Us
                         </FooterLink>
-                        <FooterLink href="#">
-                            Teaching
-                        </FooterLink>
+                    
                     </Column>
                     <Column>
                         <Heading>Contact Us</Heading>
-                        <FooterLink href="#">
-                            Manila, Philippines
+                        <FooterLink href="#"git>
+                            Philippines
                         </FooterLink>
                         <FooterLink href="#">
-                            Ottawa, Canada
+                            Canada
                         </FooterLink>
                         <FooterLink href="#">
-                            Tokyo, Japan
+                            Japan
                         </FooterLink>
                         <FooterLink href="#">
-                            Seoul, South Korea
+                            South Korea
                         </FooterLink>
                     </Column>
                     <Column>
                         <Heading>Social Media</Heading>
-                        <FooterLink href="#">
+                        <FooterLink>
                             <i className="fab fa-facebook-f">
                                 <span
                                     style={{
@@ -83,7 +72,7 @@ const Footer = () => {
                                 </span>
                             </i>
                         </FooterLink>
-                        <FooterLink href="#">
+                        <FooterLink>
                             <i className="fab fa-instagram">
                                 <span
                                     style={{
@@ -94,7 +83,7 @@ const Footer = () => {
                                 </span>
                             </i>
                         </FooterLink>
-                        <FooterLink href="#">
+                        <FooterLink>
                             <i className="fab fa-twitter">
                                 <span
                                     style={{
@@ -105,7 +94,7 @@ const Footer = () => {
                                 </span>
                             </i>
                         </FooterLink>
-                        <FooterLink href="#">
+                        <FooterLink>
                             <i className="fab fa-youtube">
                                 <span
                                     style={{

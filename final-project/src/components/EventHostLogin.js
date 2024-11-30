@@ -31,7 +31,7 @@ const EventHostLogin = () => {
 
         if (account) {
             localStorage.setItem('currentUser Email', account.email); // Store the email of the logged-in user
-            navigate('/event-host-menu');
+            navigate('/addEvent');
         } else {
             setError('Invalid email or password. Please try again.');
         }

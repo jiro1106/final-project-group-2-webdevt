@@ -14,11 +14,9 @@ import {ServicePage} from "./pages/ServicesPage";
 import {ContactPage} from "./pages/ContactPage";
 import CreateFormUser from "./components/CreateFormUser";
 
-import EventHostMenu from './functions_components/EventHostMenu';
 import AddEvent from './functions_components/EventHostAddEvent';
 import ManageEvent from './functions_components/EventHostManageEvents';
 
-import UserMenu from './functions_components/UserMenu';
 import FindEvent from './functions_components/UserFindEvent';
 import ViewUpcomingEvent from './functions_components/UserViewUpcomingEvent';
 import ViewPrevEvent from './functions_components/UserViewPrevEvent';
@@ -57,14 +55,14 @@ function App() {
           element={isLoggedIn ? <UserManagement /> : <Navigate to="/" />}
         />
           {/*Nested routes*/}
-          <Route path='/user-menu' element={<UserMenu/>}/>
+          <Route path='/findEvent' element={<FindEvent/>}/>
           {/*Nested routes*/}
             <Route path='/findEvent' element={<FindEvent/>}/>
             <Route path='/viewUpcomingEvent' element={<ViewUpcomingEvent/>}/>
             <Route path='/viewPrevEvent' element={<ViewPrevEvent/>}/>
             <Route path='/userAccDetails' element={<UserAccDetails/>}/>
 
-        <Route path='/event-host-menu' element={<EventHostMenu/>}/>
+        <Route path='/addEvent' element={<AddEvent/>}/>
           {/*Nested routes*/}
             <Route path='/addEvent' element={<AddEvent/>}/>
             <Route path='/manageEvent' element={<ManageEvent/>}/>

@@ -39,7 +39,7 @@ const LoginForm = () => {
         const account = accounts.find(acc => acc.email === email && acc.password === password);
 
         if (account) {
-            navigate('/user-menu');
+            navigate('/findEvent');
         } else {
             setError('Invalid email or password. Please try again.');
             setTimeout(() => setError(''), 2000);
