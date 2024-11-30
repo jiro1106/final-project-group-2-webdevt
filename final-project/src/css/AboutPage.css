@@ -1,15 +1,16 @@
+
 /* Container styling for the About section */
-.container3 {
+.about-page {
+  margin-top: 70px;
     text-align: center;
     padding: 20px;
     max-width: 100%;
-    margin: 0 auto;
     margin-bottom: 30px;
   }
   
   .aboutp-header {
     font-family: Outfit, "serif";
-    font-weight: 600;
+    font-weight: 800;
     font-size: 2rem;
     margin-bottom: 20px;
     color: #333;
@@ -18,9 +19,26 @@
     z-index: 1; /* Ensure it appears above other elements */
   }
   
+  .about-info{
+    padding: 2px;
+    margin: 0 85px;
+  }
+  .header-2{
+    background: linear-gradient(45deg, #397266 0%, #35393c 51%, #397266 100%);
+    font-size: 35px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: left;
+  }
+
+  .about-prg{
+    text-align: justify;
+    font-size: 18px;
+  }
   
-  /* Carousel Container */
-  .carousel {
+  
+  .carousel-aboutpage {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,16 +46,16 @@
     width: 100%;
     max-width: 2000px;
     margin: 0 auto;
-    overflow: hidden; /* Ensure content doesn't overflow */
+    overflow: hidden; 
   }
   
-  /* Styling for the images within the carousel */
-  .carousel-image {
-    width: 70%; /* Each image takes up 70% of the space */
+  
+  .carousel-image-about {
+    width: 70%; 
     height: auto;
     object-fit: cover;
-    opacity: 1; /* Images are fully visible by default */
-    transition: none; /* Remove any fade transitions */
+    opacity: 1; 
+    transition: none; 
   }
   
   /* Arrow buttons */
@@ -60,10 +78,67 @@
   }
   
   .arrow.prev {
-    left: 100px; /* Position the left arrow */
+    left: 100px; 
   }
   
   .arrow.next {
-    right: 100px; /* Position the right arrow */
+    right: 100px; 
+  }
+
+  .horizontal_section {
+    margin: 20px auto; /* Center horizontally and add spacing */
+    width: 90%; /* Same as the lines' width */
+    text-align: center; /* Center align lines */
   }
   
+  
+  .line {
+    margin-top: 50px;
+    height: 1px;
+    background-color: #39726f;
+  }
+
+  
+.button-27 {
+  appearance: none;
+  background-color: #39726f;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-family: 'Outfit', 'serif';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  margin-top: 30px;
+  min-height: 30px;
+  min-width: 180px;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 11%;
+  will-change: transform;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+ 

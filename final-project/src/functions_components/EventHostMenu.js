@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../functions_css/EventHostMenu.css';
 import { useNavigate } from 'react-router-dom';
-import xtraIcon from '../assets/xtraIcon.png'
-import {Link} from 'react-router-dom';
+import xtraIcon from '../assets/xtraIcon.png';
 
 const EventHostMenu = () => {
-    
     const navigate = useNavigate();
+    const [fullName, setFullName] = useState('');
+    const [idPicture, setIdPicture] = useState('');
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    const goToAdd = () => navigate('/addEvent');
-    const goToManage = () => navigate('/manageEvent');
+    useEffect(() => {
+        const currentUserEmail = localStorage.getItem('currentUser Email');
+        const accounts = JSON.parse(localStorage.getItem('eventHostAccounts')) || [];
+        const currentAccount = accounts.find(acc => acc.email === currentUserEmail);
+
+        if (currentAccount) {
+            setFullName(`${currentAccount.firstName} ${currentAccount.lastName}`);
+            setIdPicture(currentAccount.idPicture);
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('currentUser Email');
+        navigate('/event-host');
+    };
 
     return (
         <div className="host-menu">
@@ -18,31 +32,24 @@ const EventHostMenu = () => {
                 <p>XTRAVAGALA</p>
                 <div className="host-menu-functions">
                     <ul className="host-menu-ul">
-                    <li onClick={goToAdd} className="host-menu-li">Add Event</li>
-                    <li onClick={goToManage} className="host-menu-li">Manage Events</li>
+                        <li onClick={() => navigate('/addEvent')} className="host-menu-li">Add Event</li>
+                        <li onClick={() => navigate('/manageEvent')} className="host-menu-li">Manage Events</li>
                     </ul>
                 </div>
                 <div className="right-section">
-                <div className="drop-down">
-                    <button className="button-87">Log In</button>
-                    <div className="drop-content">
-                        <Link to="/user">
-                            <div>User</div>
-                        </Link>
-                        <Link to="/event-host">
-                            <div>Event Host</div>
-                        </Link>
-                        <Link to="/admin">
-                            <div>Admin</div>
-                        </Link>
+                    <div className="account-info" onClick={() => setDropdownOpen(prev => !prev)}>
+                        <span>{fullName || "Guest"}</span>
+                        {idPicture && <img src={idPicture} alt="Profile" className="profile-picture-menu" />}
                     </div>
+                    {dropdownOpen && (
+                        <div className="drop-content-event-host">
+                            <button onClick={handleLogout}>Logout</button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
-    </div>
     );
-
-    
 };
 
 export default EventHostMenu;

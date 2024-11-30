@@ -31,3 +31,34 @@
     margin-top:6rem;
 }
 
+.right-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.account-info {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture-menu {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 25px;
+}
+
+.drop-content-event-host {
+    position: absolute;
+    background-color: transparent;
+    z-index: 1000;
+    margin-top: 90px;
+    border-radius: 5px;
+}
+
+.account-info span{
+    text-align: center;
+}

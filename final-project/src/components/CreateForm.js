@@ -43,8 +43,10 @@ const CreateForm = () => {
                     return;
                 }
 
-                // Save the account data along with the image
+                // Save the account data along with the image and names
                 accounts.push({ 
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
                     email: formData.email, 
                     password: formData.password, 
                     idPicture: reader.result // Save the image data
@@ -54,6 +56,26 @@ const CreateForm = () => {
                 navigate('/event-host');
             };
             reader.readAsDataURL(IdPicture); // Convert image to base64
+        } else {
+            const accounts = JSON.parse(localStorage.getItem('eventHostAccounts')) || [];
+            const existingAccount = accounts.find(acc => acc.email === formData.email);
+
+            if (existingAccount) {
+                setError('An account with this email already exists. Please use a different email.');
+                setTimeout(() => setError(''), 2000);
+                return;
+            }
+
+            // Save the account data without the image
+            accounts.push({ 
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email, 
+                password: formData.password 
+            });
+            localStorage.setItem('eventHostAccounts', JSON.stringify(accounts));
+            alert('Account created successfully!');
+            navigate('/event-host');
         }
     };
 
@@ -89,33 +111,15 @@ const CreateForm = () => {
                     {error && <p className='error-message'>{error}</p>}
 
                     <div className='ID-picture'>
-                        <label className='icon-create-user'>Upload any valid ID picture (required)</label>
-                        <input 
-                            type='file' 
-                            accept='image/*' 
-                            onChange={(e) => setIdPicture(e.target.files[0])}
-                            required
-                        />
+                        <label className='icon-create'>Upload ID Picture:</label>
+                        <input type='file' accept='image/*' onChange={(e) => setIdPicture(e.target.files[0])} />
                     </div>
 
-                    <div className='checkbox-18above-create'>
-                        <label>
-                            <input type='checkbox' required />
-                            18 years old and Above
-                        </label>
-                    </div>
-                    <div className='checkbox-terms-create'>
-                        <label>
-                            <input type='checkbox' required />
-                            Agree to terms and conditions
-                        </label>
-                    </div>
-
-                    <button type='submit' className='create-account-form'>Create account</button>
+                    <button type='submit' className='create-account-form'>Create Account</button>
                 </form>
             </div>
         </div>
     );
-}
+};
 
 export default CreateForm;
