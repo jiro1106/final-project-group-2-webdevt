@@ -24,7 +24,7 @@ const ProposedEvents = () => {
     if (approve) {
         // Mark the event as approved and add accountId for filtering later
         event.status = 'approved';
-        event.accountId = localStorage.getItem('currentUser  Email');  // Store the accountId
+        event.accountId = localStorage.getItem('currentUser Email');  // Store the accountId
 
         let approvedEvents = JSON.parse(localStorage.getItem("approvedEvents")) || [];
         approvedEvents.unshift(event); // Add to the beginning of the approved events list

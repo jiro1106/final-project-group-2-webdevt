@@ -112,7 +112,7 @@ const CreateForm = () => {
 
                     <div className='ID-picture'>
                         <label className='icon-create'>Upload ID Picture:</label>
-                        <input type='file' accept='image/*' onChange={(e) => setIdPicture(e.target.files[0])} />
+                        <input type='file' accept='image/*' onChange={(e) => setIdPicture(e.target.files[0])} required />
                     </div>
 
                     <button type='submit' className='create-account-form'>Create Account</button>
