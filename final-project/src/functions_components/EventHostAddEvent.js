@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../functions_css/EventHostAddEvent.css'; 
 import EventHostMenu from './EventHostMenu';
-import { useNavigate } from 'react-router-dom';
 
 const HostAddEvent = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +16,6 @@ const HostAddEvent = () => {
   const [errors, setErrors] = useState({});
   const [eventPhotos, setEventPhotos] = useState([]); 
   const today = new Date().toISOString().split('T')[0];
-  const navigate = useNavigate();
 
   useEffect(() => {
     const savedEventData = JSON.parse(localStorage.getItem('eventData'));
@@ -49,6 +47,7 @@ const HostAddEvent = () => {
     if (!formData.startTime) newErrors.startTime = 'Start time is required.';
     if (!formData.endDate) newErrors.endDate = 'End date is required.';
     if (new Date(formData.endDate) < new Date(today)) newErrors.endDate = 'End date cannot be in the past.';
+    if (new Date(formData.endDate) < new Date(formData.startDate)) newErrors.endDate = 'End date cannot be before the start date.';
     if (!safeTrim(formData.description)) newErrors.description = 'Event description is required.';
     if (!safeTrim(formData.location)) newErrors.location = 'Event location is required.';
     if (!formData.price || isNaN(formData.price) || parseFloat(formData.price) < 0) {
@@ -64,34 +63,30 @@ const HostAddEvent = () => {
     if (validate()) {
         const currentUser  = JSON.parse(localStorage.getItem('eventHostAccounts')).find(acc => acc.email === localStorage.getItem('currentUser Email'));
         const newEvent = {
-            ...formData,
-            photos: [...eventPhotos],
-            accountId: localStorage.getItem('currentUser  Email'),
-            status: 'pending',
-            createdBy: {
-                firstName: currentUser.firstName,
-                lastName: currentUser.lastName,
-                email: currentUser.email,
-            }
-        };
+          id: Date.now(), // Unique identifier
+          ...formData,
+          photos: [...eventPhotos],
+          accountId: currentUser.email,
+          status: 'approved', // Assuming events are approved when created
+          createdBy: {
+              firstName: currentUser.firstName,
+              lastName: currentUser.lastName,
+              email: currentUser.email,
+          }
+      };
 
-      try {
-        let pendingEvents = JSON.parse(localStorage.getItem('pendingEvents')) || [];
-        pendingEvents.unshift(newEvent);
-
-        localStorage.setItem('pendingEvents', JSON.stringify(pendingEvents));
-        alert('Event submitted for approval!');
-
-        setFormData({
-          title: '', startDate: '', startTime: '', endDate: '', endTime: '', description: '', location: '', price: ''
-        });
-        setEventPhotos([]);
-      } catch (error) {
-        console.error('Error saving to localStorage:', error);
-        alert('There was an issue submitting the event.');
-      }
+        try {
+            let pendingEvents = JSON.parse(localStorage.getItem('pendingEvents')) || [];
+            pendingEvents.unshift(newEvent);
+            localStorage.setItem('pendingEvents', JSON.stringify(pendingEvents));
+            alert('Event submitted for approval!');
+            // Reset form fields...
+        } catch (error) {
+            console.error('Error saving to localStorage:', error);
+            alert('There was an issue submitting the event.');
+        }
     }
-  };
+};
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];

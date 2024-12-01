@@ -10,7 +10,7 @@ const EventHostManageEvents = () => {
 
 
   useEffect(() => {
-    const currentUserEmail = localStorage.getItem('currentUser  Email');
+    const currentUserEmail = localStorage.getItem('currentUser Email');
     const approvedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
     const userApprovedEvents = approvedEvents.filter(
         (event) => event.accountId === currentUserEmail || event.createdBy.email === currentUserEmail // Include events created by the user
@@ -52,14 +52,24 @@ const EventHostManageEvents = () => {
   };
 
   const handleDeleteEvent = (index) => {
-    const updatedEvents = [...events];
-    updatedEvents.splice(index, 1);
+    const updatedEvents = [...events];  // Create a copy of the current events
+    const eventToDelete = updatedEvents[index];  // Get the event to delete
 
-    // Update both local state and storage
+    // Remove the event from the user's list
+    updatedEvents.splice(index, 1);  // Remove the event from the local state
+
+    // Update local state
     setEvents(updatedEvents);
-    const approvedEvents = updatedEvents.filter((event) => event.status === 'approved');
-    localStorage.setItem('approvedEvents', JSON.stringify(approvedEvents));
-  };
+
+    // Retrieve all approved events from local storage
+    const allApprovedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
+
+    // Filter out the deleted event from the approved events
+    const remainingApprovedEvents = allApprovedEvents.filter(event => event.id !== eventToDelete.id);
+
+    // Update local storage with the remaining approved events
+    localStorage.setItem('approvedEvents', JSON.stringify(remainingApprovedEvents));
+};
 
   return (
     <div className="host-manageEvent">

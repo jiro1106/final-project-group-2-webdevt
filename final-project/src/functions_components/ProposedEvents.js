@@ -22,20 +22,34 @@ const ProposedEvents = () => {
     setPendingEvents(updatedEvents);
 
     if (approve) {
-        // Mark the event as approved and add accountId for filtering later
+        // Mark the event as approved
         event.status = 'approved';
-        event.accountId = localStorage.getItem('currentUser Email');  // Store the accountId
 
+        // Get the accountId from the event
+        const accountId = event.accountId;
+
+        // Retrieve approved events from local storage
         let approvedEvents = JSON.parse(localStorage.getItem("approvedEvents")) || [];
+
+        // Check if there are already approved events for this accountId
+        const existingAccountEvents = approvedEvents.filter(e => e.accountId === accountId);
+
+        // If the account already has events, add to that account's list
+        if (existingAccountEvents.length > 0) {
+            // Add the approved event to the existing account's events
+            approvedEvents = approvedEvents.filter(e => e.accountId !== accountId); // Remove previous events for that account
+        }
+
+        // Add the newly approved event
         approvedEvents.unshift(event); // Add to the beginning of the approved events list
         localStorage.setItem("approvedEvents", JSON.stringify(approvedEvents));
 
-        // Navigate to manage event page with the creator's email
+        // Optionally navigate to manage event page
         navigate({ state: { eventToEdit: event, creatorEmail: event.createdBy.email } });
     } else {
         alert(`Event "${event.title}" has been rejected.`);
     }
-  };
+};
 
   return (
     <div className="proposed-events-container">
