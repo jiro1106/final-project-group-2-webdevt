@@ -5,8 +5,19 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import {GoogleOAuthProvider,GoogleLogin} from '@react-oauth/google'
+import xtraIcon from '../assets/xtraIcon.png'
 
 const EventHostLogin = () => {
+
+    const onSuccess = (response) => {
+        console.log('Login Success: ', response.profileObj);
+    };
+
+    const onFailure = (response) => {
+        console.log('Login Failed: ', response);
+    };
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -41,6 +52,9 @@ const EventHostLogin = () => {
     return (
         <div className="host-login">
             <div className='wrapper'>
+            <Link to="/" className="link-logo">
+                <img src={xtraIcon} alt="" className="login-logo" />
+                </Link>
                 <form onSubmit={handleLogin}>
                     <h1>EVENT HOST LOGIN</h1>
                     <div className='input-box'>
@@ -57,13 +71,17 @@ const EventHostLogin = () => {
                     </div>
 
                     {error && <p className='error-message'>{error}</p>}
-                    <button type='submit' className='login'>Login</button>
+                    <button type='submit' className='login'>Log-in to account</button>
                     
                     <div className='google'>
-                        <button type='button' href='#gmail.com'>
-                            <FcGoogle className='googleicon' />
-                            Continue with Google
-                        </button>
+                     <GoogleOAuthProvider clientId='340850980431-0kiucffqabttr7l64uhu19e5750qdaj0.apps.googleusercontent.com'>
+                        <GoogleLogin
+                             buttonText="Continue with Google"
+                             onSuccess={onSuccess}
+                             onFailure={onFailure}
+                             cookiePolicy={'single_host_origin'} 
+                            />
+                    </GoogleOAuthProvider>
                     </div>
 
                     <div className='register-link'>
