@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css/LoginPage.css";
 import logo from "../assets/xtra.png";
+import {Link} from 'react-router-dom'
 
 const LoginPage = ({ onLogin }) => {
   const [error, setError] = useState("");
@@ -23,7 +24,9 @@ const LoginPage = ({ onLogin }) => {
     <body className="login-page">
       <div className="login-container">
         <form className="login-form" onSubmit={handleLogin}>
-          <img src={logo} alt="xtra logo" className="admin-login-logo" />
+          <Link to ="/">
+            <img src={logo} alt="xtra logo" className="admin-login-logo" />
+          </Link>
           <h2 className="login-header">Admin Login</h2>
 
           <input
