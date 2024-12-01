@@ -62,12 +62,18 @@ const HostAddEvent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      const newEvent = {
-        ...formData,
-        photos: [...eventPhotos],
-        accountId: localStorage.getItem('currentUser Email'),
-        status: 'pending'
-      };
+        const currentUser  = JSON.parse(localStorage.getItem('eventHostAccounts')).find(acc => acc.email === localStorage.getItem('currentUser Email'));
+        const newEvent = {
+            ...formData,
+            photos: [...eventPhotos],
+            accountId: localStorage.getItem('currentUser  Email'),
+            status: 'pending',
+            createdBy: {
+                firstName: currentUser.firstName,
+                lastName: currentUser.lastName,
+                email: currentUser.email,
+            }
+        };
 
       try {
         let pendingEvents = JSON.parse(localStorage.getItem('pendingEvents')) || [];
@@ -75,9 +81,6 @@ const HostAddEvent = () => {
 
         localStorage.setItem('pendingEvents', JSON.stringify(pendingEvents));
         alert('Event submitted for approval!');
-
-        // Redirect to ProposedEvents page to see the new event
-        navigate('/admin'); 
 
         setFormData({
           title: '', startDate: '', startTime: '', endDate: '', endTime: '', description: '', location: '', price: ''
@@ -199,7 +202,7 @@ const HostAddEvent = () => {
             <label>Event Photos:</label>
             <input type="file" onChange={handleImageChange} />
           </div>
-
+        
           <button type="submit">Submit Event</button>
         </form>
       </div>
