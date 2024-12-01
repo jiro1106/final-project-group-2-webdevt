@@ -8,15 +8,16 @@ const EventHostManageEvents = () => {
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState({});
 
+
   useEffect(() => {
-    const currentUserEmail = localStorage.getItem('currentUser Email');
+    const currentUserEmail = localStorage.getItem('currentUser  Email');
     const approvedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
     const userApprovedEvents = approvedEvents.filter(
-      (event) => event.accountId === currentUserEmail
+        (event) => event.accountId === currentUserEmail || event.createdBy.email === currentUserEmail // Include events created by the user
     );
 
     setEvents(userApprovedEvents);  // Only set approved events for the current user
-  }, []);
+}, []);
 
   const today = new Date().toISOString().split('T')[0];
 

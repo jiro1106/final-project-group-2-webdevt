@@ -22,18 +22,18 @@ const ProposedEvents = () => {
     setPendingEvents(updatedEvents);
 
     if (approve) {
-      // Mark the event as approved and add accountId for filtering later
-      event.status = 'approved';
-      event.accountId = localStorage.getItem('currentUser Email');  // Store the accountId
+        // Mark the event as approved and add accountId for filtering later
+        event.status = 'approved';
+        event.accountId = localStorage.getItem('currentUser  Email');  // Store the accountId
 
-      let approvedEvents = JSON.parse(localStorage.getItem("approvedEvents")) || [];
-      approvedEvents.unshift(event); // Add to the beginning of the approved events list
-      localStorage.setItem("approvedEvents", JSON.stringify(approvedEvents));
+        let approvedEvents = JSON.parse(localStorage.getItem("approvedEvents")) || [];
+        approvedEvents.unshift(event); // Add to the beginning of the approved events list
+        localStorage.setItem("approvedEvents", JSON.stringify(approvedEvents));
 
-      // Navigate to manage event page
-      navigate('/event-host', { state: { eventToEdit: event } });
+        // Navigate to manage event page with the creator's email
+        navigate({ state: { eventToEdit: event, creatorEmail: event.createdBy.email } });
     } else {
-      alert(`Event "${event.title}" has been rejected.`);
+        alert(`Event "${event.title}" has been rejected.`);
     }
   };
 
@@ -42,17 +42,18 @@ const ProposedEvents = () => {
       {pendingEvents.length > 0 ? (
         <div className="events-grid">
           {pendingEvents.map((event, index) => (
-            <div key={index} className="proposed-event-card">
-              <h3>{event.title}</h3>
-              <p><strong>Date:</strong> {event.startDate} to {event.endDate}</p>
-              <p><strong>Location:</strong> {event.location}</p>
-              <p><strong>Description:</strong> {event.description}</p>
-              <div className="action-buttons">
-                <button className="approve-button" onClick={() => handleApproval(index, true)}>Approve</button>
-                <button className="reject-button" onClick={() => handleApproval(index, false)}>Reject</button>
-              </div>
-            </div>
-          ))}
+    <div key={index} className="proposed-event-card">
+        <h3>{event.title}</h3>
+        <p><strong>Date:</strong> {event.startDate} to {event.endDate}</p>
+        <p><strong>Location:</strong> {event.location}</p>
+        <p><strong>Description:</strong> {event.description}</p>
+        <p><strong>Created by:</strong> {event.createdBy.firstName} {event.createdBy.lastName} ({event.createdBy.email})</p>
+        <div className="action-buttons">
+            <button className="approve-button" onClick={() => handleApproval(index, true)}>Approve</button>
+            <button className="reject-button" onClick={() => handleApproval(index, false)}>Reject</button>
+        </div>
+    </div>
+))}
         </div>
       ) : (
         <p>No pending events for approval.</p>
