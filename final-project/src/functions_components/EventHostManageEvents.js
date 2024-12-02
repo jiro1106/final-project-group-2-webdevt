@@ -8,16 +8,15 @@ const EventHostManageEvents = () => {
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState({});
 
-
   useEffect(() => {
     const currentUserEmail = localStorage.getItem('currentUser Email');
     const approvedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
     const userApprovedEvents = approvedEvents.filter(
-        (event) => event.accountId === currentUserEmail || event.createdBy.email === currentUserEmail // Include events created by the user
+      (event) => event.accountId === currentUserEmail || event.createdBy.email === currentUserEmail
     );
 
-    setEvents(userApprovedEvents);  // Only set approved events for the current user
-}, []);
+    setEvents(userApprovedEvents);
+  }, []);
 
   const today = new Date().toISOString().split('T')[0];
 
@@ -33,41 +32,32 @@ const EventHostManageEvents = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-        // Retrieve all approved events from local storage
-        const allApprovedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
-        
-        // Find the event to update using its unique id
-        const eventToUpdate = allApprovedEvents.find(event => event.id === events[editedEventIndex].id);
+      const allApprovedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
+      const eventToUpdate = allApprovedEvents.find(event => event.id === events[editedEventIndex].id);
 
-        if (eventToUpdate) {
-            // Create a new object with updated fields
-            const updatedEvent = {
-                ...eventToUpdate,
-                ...formData, // Append new data from formData
-            };
+      if (eventToUpdate) {
+        const updatedEvent = {
+          ...eventToUpdate,
+          ...formData,
+        };
 
-            // Update the event in the array
-            const updatedEvents = allApprovedEvents.map(event => 
-                event.id === updatedEvent.id ? updatedEvent : event
-            );
+        const updatedEvents = allApprovedEvents.map(event =>
+          event.id === updatedEvent.id ? updatedEvent : event
+        );
 
-            // Save the updated events back to local storage
-            localStorage.setItem('approvedEvents', JSON.stringify(updatedEvents));
-            
-            // Filter events to only show those created by the current user
-            const currentUserEmail = localStorage.getItem('currentUser Email');
-            const userApprovedEvents = updatedEvents.filter(
-                (event) => event.accountId === currentUserEmail || event.createdBy.email === currentUserEmail
-            );
+        localStorage.setItem('approvedEvents', JSON.stringify(updatedEvents));
 
-            // Update the state with the filtered events
-            setEvents(userApprovedEvents); // Update state to show only the current user's events
-            
-            setEditedEventIndex(null);
-            setFormData({});
-        }
+        const currentUserEmail = localStorage.getItem('currentUser Email');
+        const userApprovedEvents = updatedEvents.filter(
+          (event) => event.accountId === currentUserEmail || event.createdBy.email === currentUserEmail
+        );
+
+        setEvents(userApprovedEvents);
+        setEditedEventIndex(null);
+        setFormData({});
+      }
     }
-};
+  };
 
   const handleEditEvent = (index) => {
     setEditedEventIndex(index);
@@ -75,24 +65,20 @@ const EventHostManageEvents = () => {
   };
 
   const handleDeleteEvent = (index) => {
-    const updatedEvents = [...events];  // Create a copy of the current events
-    const eventToDelete = updatedEvents[index];  // Get the event to delete
-
-    // Remove the event from the user's list
-    updatedEvents.splice(index, 1);  // Remove the event from the local state
-
-    // Update local state
+    const updatedEvents = [...events];
+    const eventToDelete = updatedEvents[index];
+    updatedEvents.splice(index, 1);
     setEvents(updatedEvents);
-
-    // Retrieve all approved events from local storage
+  
     const allApprovedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
-
-    // Filter out the deleted event from the approved events
     const remainingApprovedEvents = allApprovedEvents.filter(event => event.id !== eventToDelete.id);
-
-    // Update local storage with the remaining approved events
     localStorage.setItem('approvedEvents', JSON.stringify(remainingApprovedEvents));
-};
+  
+    // Remove the event from registeredEvents as well
+    const registeredEvents = JSON.parse(localStorage.getItem('registeredEvents')) || [];
+    const updatedRegisteredEvents = registeredEvents.filter(event => event.id !== eventToDelete.id);
+    localStorage.setItem('registeredEvents', JSON.stringify(updatedRegisteredEvents));
+  };
 
   return (
     <div className="host-manageEvent">
@@ -208,14 +194,11 @@ const EventHostManageEvents = () => {
                 )}
               </td>
               <td>
-                {editedEventIndex === index ? (
-                  <div>
-                    {/* Photo is displayed but not editable */}
-                    <img src={formData.photo} alt="Event" style={{ width: '100px', height: 'auto' }} />
-                  </div>
-                ) : (
-                  event.photo && <img src={event.photo} alt="Event" style={{ width: '100px', height: 'auto' }} />
-                )}
+                <img
+                  src={event.photos && event.photos[0] ? event.photos[0] : 'https://via.placeholder.com/150'}
+                  alt="Event"
+                  style={{ width: '100px', height: 'auto' }}
+                />
               </td>
               <td>
                 {editedEventIndex === index ? (

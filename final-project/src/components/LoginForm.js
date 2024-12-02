@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../css/LoginForm.css';
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {GoogleOAuthProvider,GoogleLogin} from '@react-oauth/google'
@@ -37,12 +36,12 @@ const LoginForm = () => {
         setPassword (e.target.value);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleLogin = (e) => {
+        e.preventDefault(); // Prevent the default form submission
 
-        if (!validateEmail(email)) {
-            setError('Please enter a valid email address.');
-            setTimeout(() => setError(''), 2000);
+        // Check if email and password fields are not empty
+        if (!email || !password) {
+            setError("Email and password are required");
             return;
         }
 
@@ -50,10 +49,11 @@ const LoginForm = () => {
         const account = accounts.find(acc => acc.email === email && acc.password === password);
 
         if (account) {
-            navigate('/findEvent');
+            // Store the email in localStorage
+            localStorage.setItem('currentUser Email', account.email);
+            navigate('/findEvent'); // Redirect to the desired page
         } else {
-            setError('Invalid email or password. Please try again.');
-            setTimeout(() => setError(''), 2000);
+            setError("Invalid email or password");
         }
     };
 
@@ -63,7 +63,7 @@ const LoginForm = () => {
                 <Link to="/" className="link-logo">
                 <img src={xtraIcon} alt="" className="login-logo" />
                 </Link>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleLogin}>
                     <h1>USER LOGIN</h1>
                     <div className='input-box'>
                         <input

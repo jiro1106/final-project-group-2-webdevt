@@ -1,26 +1,39 @@
 .user-form-page{
-    background-color: #5da399; 
+    background-image: url('../assets/createuserthumbnail.png');
+    background-size:cover;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    width:auto;
     height: 100vh; 
     display: flex; 
 }
 
+.become-host-h2{
+    text-align: center;
+    font-weight:200;
+    margin-top:-1rem
+}
 .wrapper-create-user {
     width: 100%;
     max-width: 700px;
     height: 100%;
-    max-height: 750px;
-    background: #2a6d6b;
+    max-height: 800px;
+    background:white;
+    color:black;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 1rem;
     box-sizing: border-box;
     margin-left: 620px;
-    margin-top: 130px;
+    margin-top: 40px;
     border-radius: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    opacity:1;
 }
 
 .wrapper-create-user h1 {
+    font-weight:700;
     text-align: center;
     margin-bottom: 40px;
     margin-top: 0px;
@@ -111,3 +124,15 @@
     margin-top: 7px;
 }
 
+.login-shortcut{
+    text-align: center;
+    margin-top:2.5rem;
+}
+
+.link-login-shortcut{
+    font-weight:600;
+}
+
+.host-shortcut-login{
+    font-weight:600;
+}
