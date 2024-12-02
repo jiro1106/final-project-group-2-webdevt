@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import ProposedEvents from "../functions_components/ProposedEvents"; // Import the ProposedEvents component
+import ProposedEvents from "../functions_components/AdminProposedEvents";
+import ApprovedEvents from "../functions_components/AdminApprovedEvents"; // Import the new component
 import "../css/Dashboard.css";
 import logo2 from "../assets/xtra2.png";
 
 const Dashboard = ({ onLogout }) => {
-  const [activeSection, setActiveSection] = useState(""); // Track which section is active
+  const [activeSection, setActiveSection] = useState(""); 
   const [pendingEvents, setPendingEvents] = useState([]);
   const [approvedEvents, setApprovedEvents] = useState([]);
 
-  // Fetch pending and approved events from localStorage on component mount
   useEffect(() => {
     const storedPendingEvents = JSON.parse(localStorage.getItem("pendingEvents")) || [];
     const storedApprovedEvents = JSON.parse(localStorage.getItem("approvedEvents")) || [];
@@ -18,7 +18,7 @@ const Dashboard = ({ onLogout }) => {
   }, []);
 
   const handleNavigation = (section) => {
-    setActiveSection(section); // Change active section based on clicked link
+    setActiveSection(section);
   };
 
   const handleApproveEvent = (index) => {
@@ -26,10 +26,9 @@ const Dashboard = ({ onLogout }) => {
     const eventToApprove = updatedPendingEvents.splice(index, 1)[0];
     setPendingEvents(updatedPendingEvents);
 
-    const updatedApprovedEvents = [...approvedEvents, eventToApprove];
+    const updatedApprovedEvents = [...approvedEvents, { ...eventToApprove, status: "approved" }];
     setApprovedEvents(updatedApprovedEvents);
 
-    // Save updated lists to localStorage
     localStorage.setItem("pendingEvents", JSON.stringify(updatedPendingEvents));
     localStorage.setItem("approvedEvents", JSON.stringify(updatedApprovedEvents));
   };
@@ -39,7 +38,6 @@ const Dashboard = ({ onLogout }) => {
     updatedPendingEvents.splice(index, 1);
     setPendingEvents(updatedPendingEvents);
     
-    // Save updated list to localStorage
     localStorage.setItem("pendingEvents", JSON.stringify(updatedPendingEvents));
   };
 
@@ -68,7 +66,7 @@ const Dashboard = ({ onLogout }) => {
         {activeSection === "events" && (
           <section id="events" className="card">
             <h2>Event Management</h2>
-            <p>View, create, and manage events here.</p>
+            <ApprovedEvents approvedEvents={approvedEvents} /> {/* Include the ApprovedEvents component */}
           </section>
         )}
 
@@ -82,7 +80,6 @@ const Dashboard = ({ onLogout }) => {
         {activeSection === "proposals" && (
           <section id="proposals" className="card">
             <h2>Proposed Events</h2>
-            {/* Pass the pending events and approval/rejection handlers to the ProposedEvents component */}
             <ProposedEvents
               pendingEvents={pendingEvents}
               approvedEvents={approvedEvents}

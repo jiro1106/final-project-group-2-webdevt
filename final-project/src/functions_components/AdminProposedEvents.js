@@ -50,6 +50,7 @@ const ProposedEvents = () => {
     <div key={index} className="proposed-event-card">
         <h3>{event.title}</h3>
         <p><strong>Date:</strong> {event.startDate} to {event.endDate}</p>
+        <p><strong>Time:</strong> {event.startTime} to {event.endTime}</p>
         <p><strong>Location:</strong> {event.location}</p>
         <p><strong>Description:</strong> {event.description}</p>
         <p><strong>Created by:</strong> {event.createdBy.firstName} {event.createdBy.lastName} ({event.createdBy.email})</p>
