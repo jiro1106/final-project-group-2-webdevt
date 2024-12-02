@@ -39,6 +39,9 @@ const UserViewUpcomingEvents = () => {
                 <p>
                   <strong>Location:</strong> {event.location}
                 </p>
+                <p>
+                  <strong>Price:</strong> ${event.price}
+                </p>
               </div>
             </div>
           ))

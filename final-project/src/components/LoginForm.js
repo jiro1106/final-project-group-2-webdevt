@@ -87,7 +87,7 @@ const LoginForm = () => {
                     </div>
 
                     <div className='forgot'>
-                        <a href='#/'>Forgot Password?</a>
+                        <a href='/forgot-password-user'>Forgot Password?</a>
                     </div>
 
                     {error && <p className='error-message'>{error}</p>}
