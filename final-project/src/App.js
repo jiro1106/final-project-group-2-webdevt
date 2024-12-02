@@ -19,8 +19,6 @@ import ManageEvent from './functions_components/EventHostManageEvents';
 
 import FindEvent from './functions_components/UserFindEvent';
 import ViewUpcomingEvent from './functions_components/UserViewUpcomingEvent';
-import ViewPrevEvent from './functions_components/UserViewPrevEvent';
-import UserAccDetails from './functions_components/UserAccDetails';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -59,8 +57,6 @@ function App() {
           {/*Nested routes*/}
             <Route path='/findEvent' element={<FindEvent/>}/>
             <Route path='/viewUpcomingEvent' element={<ViewUpcomingEvent/>}/>
-            <Route path='/viewPrevEvent' element={<ViewPrevEvent/>}/>
-            <Route path='/userAccDetails' element={<UserAccDetails/>}/>
 
         <Route path='/addEvent' element={<AddEvent/>}/>
           {/*Nested routes*/}

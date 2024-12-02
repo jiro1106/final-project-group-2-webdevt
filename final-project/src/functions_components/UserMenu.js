@@ -15,7 +15,7 @@ const UserMenu = () => {
         const loggedInUser  = accounts.find(acc => acc.email === currentUserEmail); // Use the same key
 
         if (loggedInUser ) {
-            setFullName(`${loggedInUser .firstName} ${loggedInUser .lastName}`);
+            setFullName(`${loggedInUser.firstName} ${loggedInUser.lastName}`);
             setprofilePicture(loggedInUser.profilePicture);
         }
     }, []);
@@ -27,8 +27,6 @@ const UserMenu = () => {
 
     const goToFindEvent = () => navigate('/findEvent');
     const goToViewUpcomingEvent = () => navigate('/viewUpcomingEvent');
-    const goToPrevEvent = () => navigate('/viewPrevEvent');
-    const goToUserAccDetails = () => navigate('/userAccDetails');
 
     return (
         <div className="user-menu">
@@ -39,8 +37,6 @@ const UserMenu = () => {
                     <ul className="user-menu-ul">
                         <li onClick={goToFindEvent} className="user-menu-li">Find Events</li>
                         <li onClick={goToViewUpcomingEvent} className="user-menu-li">View My Upcoming Events</li>
-                        <li onClick={goToPrevEvent} className="user-menu-li">View Previous Events</li>
-                        <li onClick={goToUserAccDetails} className="user-menu-li">Account Details</li>
                     </ul>
                 </div>
                 <div className="right-section-user">
