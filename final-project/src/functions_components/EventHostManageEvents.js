@@ -33,18 +33,41 @@ const EventHostManageEvents = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      const updatedEvents = [...events];
-      updatedEvents[editedEventIndex] = { ...formData };
+        // Retrieve all approved events from local storage
+        const allApprovedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
+        
+        // Find the event to update using its unique id
+        const eventToUpdate = allApprovedEvents.find(event => event.id === events[editedEventIndex].id);
 
-      // Update both local state and storage
-      setEvents(updatedEvents);
-      const approvedEvents = updatedEvents.filter((event) => event.status === 'approved');
-      localStorage.setItem('approvedEvents', JSON.stringify(approvedEvents));
-      
-      setEditedEventIndex(null);
-      setFormData({});
+        if (eventToUpdate) {
+            // Create a new object with updated fields
+            const updatedEvent = {
+                ...eventToUpdate,
+                ...formData, // Append new data from formData
+            };
+
+            // Update the event in the array
+            const updatedEvents = allApprovedEvents.map(event => 
+                event.id === updatedEvent.id ? updatedEvent : event
+            );
+
+            // Save the updated events back to local storage
+            localStorage.setItem('approvedEvents', JSON.stringify(updatedEvents));
+            
+            // Filter events to only show those created by the current user
+            const currentUserEmail = localStorage.getItem('currentUser Email');
+            const userApprovedEvents = updatedEvents.filter(
+                (event) => event.accountId === currentUserEmail || event.createdBy.email === currentUserEmail
+            );
+
+            // Update the state with the filtered events
+            setEvents(userApprovedEvents); // Update state to show only the current user's events
+            
+            setEditedEventIndex(null);
+            setFormData({});
+        }
     }
-  };
+};
 
   const handleEditEvent = (index) => {
     setEditedEventIndex(index);
