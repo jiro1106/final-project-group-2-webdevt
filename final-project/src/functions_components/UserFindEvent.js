@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../functions_css/UserFindEvent.css';
 import UserMenu from './UserMenu';
 import userThumbnail from '../assets/userthumbnail.jpeg';
+import {Link} from 'react-scroll';
 
 const UserFindEvent = () => {
   const [events, setEvents] = useState([]);
@@ -44,10 +45,14 @@ const UserFindEvent = () => {
         <img src={userThumbnail} alt="thumbnail" className="user-thumbnail"/>
         <div className="overlay-items">
           <h1 className="user-openingtext">BOOK NOW</h1>
-          <button className="btn-findEvent">FIND EVENTS</button>
+          
+          <Link activeclass = 'active' to ='event-cards-container' spy={true} smooth={true} offset={-100}  duration={600} className="btn-findEvent">FIND EVENT</Link>
         </div>
       </div>
-      <h2 className="user-findEvent-h2">Manage Events</h2>
+      <div className="user-mainTitle">
+        <h2 className="user-mainText1">FIND</h2>
+        <h2 className="user-mainText2">EVENTS</h2>
+      </div>
       <div className="event-cards-container">
         {events.length === 0 ? (
           <p>No events available at the moment.</p>
