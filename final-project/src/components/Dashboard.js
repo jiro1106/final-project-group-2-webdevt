@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProposedEvents from "../functions_components/AdminProposedEvents";
-import ApprovedEvents from "../functions_components/AdminApprovedEvents"; 
+import ApprovedEvents from "../functions_components/AdminApprovedEvents";
+import AdminManageUsers from "../functions_components/AdminManageUsers"; // Import the user management component
 import "../css/Dashboard.css";
 import logo2 from "../assets/xtra2.png";
 
@@ -8,16 +9,13 @@ const Dashboard = ({ onLogout }) => {
   const [activeSection, setActiveSection] = useState(""); 
   const [pendingEvents, setPendingEvents] = useState([]);
   const [approvedEvents, setApprovedEvents] = useState([]);
-  const [users, setUsers] = useState([]); // State for users
 
   useEffect(() => {
     const storedPendingEvents = JSON.parse(localStorage.getItem("pendingEvents")) || [];
     const storedApprovedEvents = JSON.parse(localStorage.getItem("approvedEvents")) || [];
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || []; // Load users from localStorage
     
     setPendingEvents(storedPendingEvents);
     setApprovedEvents(storedApprovedEvents);
-    setUsers(storedUsers); // Set users
   }, []);
 
   const handleNavigation = (section) => {
@@ -42,14 +40,6 @@ const Dashboard = ({ onLogout }) => {
     setPendingEvents(updatedPendingEvents);
     
     localStorage.setItem("pendingEvents", JSON.stringify(updatedPendingEvents));
-  };
-
-  // Function to delete a user
-  const handleDeleteUser = (index) => {
-    const updatedUsers = [...users];
-    updatedUsers.splice(index, 1);
-    setUsers(updatedUsers);
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
   };
 
   return (
@@ -77,23 +67,14 @@ const Dashboard = ({ onLogout }) => {
         {activeSection === "events" && (
           <section id="events" className="card">
             <h2>Event Management</h2>
-            <ApprovedEvents ApprovedEvents={ApprovedEvents} /> 
+            <ApprovedEvents approvedEvents={approvedEvents} />
           </section>
         )}
 
         {activeSection === "users" && (
           <section id="users" className="card">
             <h2>User Management</h2>
-            <ul>
-              {users.map((user, index) => (
-                <li key={index} className="user-item">
-                  <span>{user.name} ({user.email})</span>
-                  <button onClick={() => handleDeleteUser(index)} className="delete-button">
-                    Delete
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <AdminManageUsers /> {/* Render component without passing it as a prop */}
           </section>
         )}
 
