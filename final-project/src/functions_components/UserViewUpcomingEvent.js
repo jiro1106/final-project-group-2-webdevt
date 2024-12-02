@@ -6,10 +6,24 @@ const UserViewUpcomingEvents = () => {
   const [registeredEvents, setRegisteredEvents] = useState([]);
 
   useEffect(() => {
-    // Fetch registered events from local storage
-    const events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
-    setRegisteredEvents(events);
-  }, [registeredEvents]); // Dependency array to re-run when registeredEvents changes
+    const fetchEvents = () => {
+      const approvedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
+      setRegisteredEvents(approvedEvents);
+    };
+  
+    fetchEvents();
+  
+    // Listen for storage changes
+    const handleStorageChange = () => {
+      fetchEvents();
+    };
+  
+    window.addEventListener('storage', handleStorageChange);
+  
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   return (
     <div className="user-upcoming-events">

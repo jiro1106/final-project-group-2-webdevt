@@ -1,6 +1,7 @@
 // src/components/ForgotPasswordUser .js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../functions_css/forgotPasswordUser.css';
 
 const ForgotPasswordUser  = () => {
     const [email, setEmail] = useState('');
@@ -25,26 +26,28 @@ const ForgotPasswordUser  = () => {
     };
 
     return (
-        <div>
-            <h1>Reset Password for User</h1>
+        <div className='forgot-password-user'>
+            <div className='wrapper-forgot-password-user'>
+            <h1 className='wrapper-forgot-password-user'>Reset Password for User</h1>
             <form onSubmit={handleSubmit}>
-                <input
+                <input className='wrapper-forgot-password-user'
                     type="email"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-                <input
+                <input className='wrapper-forgot-password-user'
                     type="password"
                     placeholder="Enter new password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     required
                 />
-                <button type="submit">Reset Password</button>
+                <button className='wrapper-forgot-password-user' type="submit">Reset Password</button>
             </form>
             {message && <p>{message}</p>}
+            </div>
         </div>
     );
 };

@@ -6,7 +6,6 @@ import { FaUser  } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 const CreateFormUser  = () => {
-
     const navigate = useNavigate(); 
     const [profilePicture, setProfilePicture] = useState(null);
 
@@ -24,23 +23,36 @@ const CreateFormUser  = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        // Check if email is valid
+        if (!validateEmail(formData.email)) {
+            setError('Please enter a valid email address.');
+            setTimeout(() => setError(''), 2000);
+            return;
+        }
+
         if (formData.password !== formData.confirmPassword) {
             setError('Passwords do not match!');
             setTimeout(() => setError(''), 2000);
             return;
         }
-    
+
         const accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
         const existingAccount = accounts.find(acc => acc.email === formData.email);
-    
+
         if (existingAccount) {
             setError('An account with this email already exists. Please use a different email.');
             setTimeout(() => setError(''), 2000);
             return;
         }
-    
+
         // Create the account object to store in local storage
         const newAccount = { 
             firstName: formData.firstName,
@@ -48,7 +60,7 @@ const CreateFormUser  = () => {
             email: formData.email, 
             password: formData.password 
         };
-    
+
         // If there's a profile picture, handle it
         if (profilePicture) {
             const reader = new FileReader();
@@ -68,7 +80,6 @@ const CreateFormUser  = () => {
             navigate('/user');
         }
     };
-
     return (
         <div className="user-form-page">
             <div className='wrapper-create-user'>

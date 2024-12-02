@@ -8,8 +8,23 @@ const UserFindEvent = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    const approvedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
-    setEvents(approvedEvents); // Display all approved events
+    const fetchEvents = () => {
+      const approvedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
+      setEvents(approvedEvents);
+    };
+  
+    fetchEvents();
+  
+    // Listen for storage changes
+    const handleStorageChange = () => {
+      fetchEvents();
+    };
+  
+    window.addEventListener('storage', handleStorageChange);
+  
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
   }, []);
 
   const handleRegister = (event) => {

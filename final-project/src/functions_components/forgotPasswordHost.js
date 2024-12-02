@@ -1,6 +1,7 @@
 // src/components/ForgotPasswordHost.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../functions_css/forgotPasswordHost.css';
 
 const ForgotPasswordHost = () => {
     const [email, setEmail] = useState('');
@@ -25,26 +26,28 @@ const ForgotPasswordHost = () => {
     };
 
     return (
-        <div>
-            <h1>Reset Password for Event Host</h1>
+        <div className='forgot-password-host'>
+            <div className='wrapper-forgot-password'>
+            <h1 className='wrapper-forgot-password'>Reset Password for Event Host</h1>
             <form onSubmit={handleSubmit}>
-                <input
+                <input className='wrapper-forgot-password'
                     type="email"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-                <input
+                <input className='wrapper-forgot-password'
                     type="password"
                     placeholder="Enter new password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     required
                 />
-                <button type="submit">Reset Password</button>
+                <button className='wrapper-forgot-password' type="submit">Reset Password</button>
             </form>
             {message && <p>{message}</p>}
+            </div>
         </div>
     );
 };
