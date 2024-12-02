@@ -29,16 +29,7 @@ const ProposedEvents = () => {
         const accountId = event.accountId;
 
         // Retrieve approved events from local storage
-        let approvedEvents = JSON.parse(localStorage.getItem("approvedEvents")) || [];
-
-        // Check if there are already approved events for this accountId
-        const existingAccountEvents = approvedEvents.filter(e => e.accountId === accountId);
-
-        // If the account already has events, add to that account's list
-        if (existingAccountEvents.length > 0) {
-            // Add the approved event to the existing account's events
-            approvedEvents = approvedEvents.filter(e => e.accountId !== accountId); // Remove previous events for that account
-        }
+        let approvedEvents = JSON.parse(localStorage.getItem("approvedEvents")) || [];        
 
         // Add the newly approved event
         approvedEvents.unshift(event); // Add to the beginning of the approved events list
