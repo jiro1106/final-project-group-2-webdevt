@@ -3,7 +3,7 @@ import "../css/ContactPage.css";
 import { Navbar } from '../components/Navbar';
 import Footer from "../components/Footer";
 
-export const ContactPage = () => {
+export const ContactPage = () => {    
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -17,55 +17,82 @@ export const ContactPage = () => {
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const onSubmit = async (event) => {
+        event.preventDefault();
         const newErrors = {};
-
+    
         if (!formData.name.trim()) {
             newErrors.name = 'Name is required';
         }
         if (!formData.email.trim()) {
             newErrors.email = 'Email is required';
         } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
-            newErrors.email = 'Please enter a valid email address';}
+            newErrors.email = 'Please enter a valid email address';
+        }
         if (!formData.contactnum.trim()) {
             newErrors.contactnum = 'Phone Number is required';
         }
         if (!formData.date.trim()) {
             newErrors.date = 'Date is required';
-        }else {
+        } else {
             const selectedDate = new Date(formData.date);
             const currentDate = new Date();
             currentDate.setHours(0, 0, 0, 0);
             if (selectedDate < currentDate) {
                 newErrors.date = 'Please select a future date';
-            }}
+            }
+        }
         if (!formData.category.trim()) {
             newErrors.category = 'Select type of Event';
         }
         if (formData.category === 'Others' && !formData.customEvent.trim()) {
             newErrors.customEvent = 'Please specify the event type';
         }
-
+    
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
             setSuccessMessage('');
-        } else {
-            setErrors({});
-            setSuccessMessage('Form Submitted');
-
-            setFormData({
-                name: '',
-                email: '',
-                contactnum: '',
-                date: '',
-                category: '',
-                customEvent: '',
-                message: '',
+            return;
+        }
+    
+        setErrors({});
+    
+        const submissionData = {
+            ...formData,
+            access_key: "22c34624-621f-4769-99fd-f7813bdc5c7a",
+        };
+    
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify(submissionData),
             });
+            const result = await response.json();
+    
+            if (result.success) {
+                setSuccessMessage('Form Submitted Successfully');
+                setFormData({
+                    name: '',
+                    email: '',
+                    contactnum: '',
+                    date: '',
+                    category: '',
+                    customEvent: '',
+                    message: '',
+                });
+            } else {
+                setSuccessMessage('Submission failed. Please try again.');
+            }
+        } catch (error) {
+            setSuccessMessage('An error occurred. Please try again later.');
+            console.error('Submission error:', error);
         }
     };
-
+    
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
@@ -94,7 +121,7 @@ export const ContactPage = () => {
                 <div className="horizontal_section">
                     <div className="line"></div>
                 </div>
-                <form className="contact-form" onSubmit={handleSubmit}>
+                <form className="contact-form" onSubmit={onSubmit}>
                     <label htmlFor="name">Name: </label>
                     <input
                         type="text"
