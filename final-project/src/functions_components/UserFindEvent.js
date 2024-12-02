@@ -2,26 +2,18 @@ import React, { useState, useEffect } from 'react';
 import '../functions_css/UserFindEvent.css';
 import UserMenu from './UserMenu';
 import userThumbnail from '../assets/userthumbnail.jpeg';
-import {Link} from 'react-scroll';
+import { Link } from 'react-scroll';
 
 const UserFindEvent = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    const currentUserEmail = localStorage.getItem('currentUser Email');
     const approvedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
-    const userApprovedEvents = approvedEvents.filter(
-      (event) => event.accountId === currentUserEmail || event.createdBy.email === currentUserEmail
-    );
-
-    setEvents(userApprovedEvents); // Only set approved events for the current user
+    setEvents(approvedEvents); // Display all approved events
   }, []);
 
   const handleRegister = (event) => {
-    // Retrieve the existing registered events from local storage
     const registeredEvents = JSON.parse(localStorage.getItem('registeredEvents')) || [];
-
-    // Check if the event is already registered
     const isAlreadyRegistered = registeredEvents.some((e) => e.title === event.title);
 
     if (isAlreadyRegistered) {
@@ -29,7 +21,6 @@ const UserFindEvent = () => {
       return;
     }
 
-    // Add the new event to the registered events array
     const updatedRegisteredEvents = [...registeredEvents, event];
     localStorage.setItem('registeredEvents', JSON.stringify(updatedRegisteredEvents));
 
@@ -42,11 +33,20 @@ const UserFindEvent = () => {
         <UserMenu />
       </header>
       <div className="thumbnail-section">
-        <img src={userThumbnail} alt="thumbnail" className="user-thumbnail"/>
+        <img src={userThumbnail} alt="thumbnail" className="user-thumbnail" />
         <div className="overlay-items">
           <h1 className="user-openingtext">BOOK NOW</h1>
-          
-          <Link activeclass = 'active' to ='event-cards-container' spy={true} smooth={true} offset={-100}  duration={600} className="btn-findEvent">FIND EVENT</Link>
+          <Link
+            activeClass="active"
+            to="event-cards-container"
+            spy={true}
+            smooth={true}
+            offset={-100}
+            duration={600}
+            className="btn-findEvent"
+          >
+            FIND EVENT
+          </Link>
         </div>
       </div>
       <div className="user-mainTitle">
@@ -63,7 +63,9 @@ const UserFindEvent = () => {
                 src={event.photos[0] || 'https://via.placeholder.com/150'}
                 alt={event.title}
                 className="event-card-image"
+                onError={(e) => e.target.src = 'https://via.placeholder.com/150'} // Handle broken image links
               />
+             
               <div className="event-card-content">
                 <h3 className="event-card-title">{event.title}</h3>
                 <p>
@@ -72,7 +74,10 @@ const UserFindEvent = () => {
                 <p>
                   <strong>End:</strong> {event.endDate} {event.endTime}
                 </p>
-                <button className="event-card-button" onClick={() => handleRegister(event)}>
+                <button
+                  className="event-card-button"
+                  onClick={() => handleRegister(event)}
+                >
                   Register
                 </button>
               </div>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../css/LoginForm.css';
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {GoogleOAuthProvider,GoogleLogin} from '@react-oauth/google'
