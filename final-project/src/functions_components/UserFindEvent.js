@@ -65,7 +65,6 @@ const UserFindEvent = () => {
                 className="event-card-image"
                 onError={(e) => e.target.src = 'https://via.placeholder.com/150'} // Handle broken image links
               />
-             
               <div className="event-card-content">
                 <h3 className="event-card-title">{event.title}</h3>
                 <p>
@@ -73,6 +72,12 @@ const UserFindEvent = () => {
                 </p>
                 <p>
                   <strong>End:</strong> {event.endDate} {event.endTime}
+                </p>
+                <p>
+                  <strong>Location:</strong> {event.location}
+                </p>
+                <p>
+                  <strong>Price:</strong> ${event.price}
                 </p>
                 <button
                   className="event-card-button"
