@@ -14,24 +14,22 @@ const AdminManageUsers = () => {
     setUsers(allUsers);
   }, []);
 
-  const handleDeleteUser = (index) => {
-    const updatedUsers = [...users];
-    updatedUsers.splice(index, 1);  // Remove the user at the specified index
-    setUsers(updatedUsers);
+  const handleDeleteUser = (userEmail) => {
+    // Get current data from localStorage
+    let eventHostAccounts = JSON.parse(localStorage.getItem("eventHostAccounts")) || [];
+    let userAccounts = JSON.parse(localStorage.getItem("userAccounts")) || [];
+    
+    // Filter out the user to be deleted from both eventHostAccounts and userAccounts
+    const updatedEventHostAccounts = eventHostAccounts.filter((user) => user.email !== userEmail);
+    const updatedUserAccounts = userAccounts.filter((user) => user.email !== userEmail);
+    
+    // Update localStorage with the filtered lists
+    localStorage.setItem("eventHostAccounts", JSON.stringify(updatedEventHostAccounts));
+    localStorage.setItem("userAccounts", JSON.stringify(updatedUserAccounts));
 
-    // Determine if the user is from eventHostAccounts or userAccounts and update accordingly
-    const isEventHost = users[index].role === "eventHost";  // Assuming you store the role in the user object
-    let updatedLocalStorage;
-
-    if (isEventHost) {
-      updatedLocalStorage = JSON.parse(localStorage.getItem("eventHostAccounts")) || [];
-      updatedLocalStorage.splice(index, 1);
-      localStorage.setItem("eventHostAccounts", JSON.stringify(updatedLocalStorage));
-    } else {
-      updatedLocalStorage = JSON.parse(localStorage.getItem("userAccounts")) || [];
-      updatedLocalStorage.splice(index, 1);
-      localStorage.setItem("userAccounts", JSON.stringify(updatedLocalStorage));
-    }
+    // Update the state with the remaining users
+    const remainingUsers = [...updatedEventHostAccounts, ...updatedUserAccounts];
+    setUsers(remainingUsers);
   };
 
   return (
@@ -58,7 +56,7 @@ const AdminManageUsers = () => {
                 <td>{user.email}</td>
                 <td>
                   <button
-                    onClick={() => handleDeleteUser(index)}
+                    onClick={() => handleDeleteUser(user.email)} // Deleting based on email
                     className="action-button delete"
                   >
                     Delete
