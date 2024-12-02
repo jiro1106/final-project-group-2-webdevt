@@ -1,0 +1,123 @@
+.accShortcut-container {
+  margin-top: 2rem;
+  background-image: url('/src/assets/accshor.png');
+  height: auto; /* Changed to auto for better adaptability */
+  min-height: 60vh; /* Ensures the container doesn't shrink on smaller screens */
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+  justify-content: center; /* Centers items */
+  position: relative;
+  padding: 2rem; /* Adds inner spacing */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.accShortcut-items {
+  text-align: center;
+  margin-left: 2rem;
+  margin-top: 8rem;
+  position: relative; /* Changed to relative for better layout control */
+  z-index: 1; /* Ensures it appears on top of the image */
+}
+
+.accShortcut-text {
+  color: white;
+  font-family: "Outfit", serif;
+}
+
+.accShortcut-h1 {
+  font-size: 3.3rem;
+  line-height: 2rem;
+}
+
+.accShortcut-logo {
+  width: 100%; /* Ensures responsiveness */
+  max-width: 40rem; /* Keeps the image at a reasonable max size */
+  height: auto; /* Maintains aspect ratio */
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  margin-right: 8rem;
+  border-radius: 0.2rem;
+  position: relative;
+}
+
+.accShortcut-logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%; /* Positioning it to the right of the image */
+  width: 30%; /* You can adjust the width as needed */
+  height: 100%; /* Matches the height of the image */
+  background-color: #36827f; /* Solid color overlay */
+  opacity: 0.5; /* Adjust the opacity to control the intensity */
+  border-radius: 0.2rem;
+  z-index: -1; /* Place the overlay behind the image */
+}
+
+a{
+  text-decoration: none;
+}
+
+.btn-createAcc {
+  font-family: "Outfit", serif;
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Vertically center the text */
+  justify-content: center; /* Horizontally center the text */
+  text-align: center;
+  border: none;
+  background-color: #397266;
+  width: 15rem;
+  padding: 1rem;
+  font-size: 1rem;
+  color: white;
+  margin-top: 1rem;
+  margin-left:3rem;
+  text-align: center; /* Ensure multi-line text is centered */
+  cursor: pointer;
+  border-radius: 0.5rem; /* Optional: Smooth edges */
+}
+
+
+.btn-createAcc:hover {
+  background-color: #2f5d54;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .accShortcut-items {
+    margin-left: 5rem; /* Adjust left margin for medium screens */
+    margin-top: 3rem; /* Reduce top margin */
+  }
+
+  .accShortcut-logo {
+    max-width: 35rem; /* Reduce image size for medium screens */
+    margin-right: 5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .accShortcut-container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items on smaller screens */
+    padding: 1rem; /* Reduce padding */
+  }
+
+  .accShortcut-items {
+    margin-left: 0; /* Center items on mobile */
+    margin-top: 2rem; /* Reduce top margin */
+  }
+
+  .accShortcut-logo {
+    max-width: 90%; /* Allow image to shrink dynamically */
+    margin-right: 0;
+  }
+
+  .accShortcut-h1 {
+    font-size: 2.5rem; /* Reduce text size for smaller screens */
+  }
+
+  .btn-createAcc {
+    width: 12rem; /* Reduce button size */
+    font-size: 0.9rem; /* Adjust font size */
+  }
+}

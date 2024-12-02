@@ -1,0 +1,144 @@
+
+/* Container styling for the About section */
+.about-page {
+  margin-top: 70px;
+    text-align: center;
+    padding: 20px;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .aboutp-header {
+    font-family: Outfit, "serif";
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    display: block; /* Ensure the element is rendered */
+    visibility: visible; /* Ensure it's visible */
+    z-index: 1; /* Ensure it appears above other elements */
+  }
+  
+  .about-info{
+    padding: 2px;
+    margin: 0 85px;
+  }
+  .header-2{
+    background: linear-gradient(45deg, #397266 0%, #35393c 51%, #397266 100%);
+    font-size: 35px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: left;
+  }
+
+  .about-prg{
+    text-align: justify;
+    font-size: 18px;
+  }
+  
+  
+  .carousel-aboutpage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
+    overflow: hidden; 
+  }
+  
+  
+  .carousel-image-about {
+    width: 70%; 
+    height: auto;
+    object-fit: cover;
+    opacity: 1; 
+    transition: none; 
+  }
+  
+  /* Arrow buttons */
+  .arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem;
+    transition: color 0.3s;
+  }
+  
+  .arrow:hover {
+    color: #39726f;
+  }
+  
+  .arrow.prev {
+    left: 100px; 
+  }
+  
+  .arrow.next {
+    right: 100px; 
+  }
+
+  .horizontal_section {
+    margin: 20px auto; /* Center horizontally and add spacing */
+    width: 90%; /* Same as the lines' width */
+    text-align: center; /* Center align lines */
+  }
+  
+  
+  .line {
+    margin-top: 50px;
+    height: 1px;
+    background-color: #39726f;
+  }
+
+  
+.button-27 {
+  appearance: none;
+  background-color: #39726f;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-family: 'Outfit', 'serif';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  margin-top: 30px;
+  min-height: 30px;
+  min-width: 180px;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 11%;
+  will-change: transform;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+ 

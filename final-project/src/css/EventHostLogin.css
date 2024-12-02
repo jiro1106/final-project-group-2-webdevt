@@ -1,0 +1,131 @@
+.host-login{
+    background-image: url('../assets/eventhostbackground.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.wrapper {
+    width: 690px;
+    max-width: 700px;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-left: 1220px;
+}
+
+.wrapper h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 0;
+}
+
+.wrapper .input-box {
+    position: relative;
+    width: 600px;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.wrapper .error{
+    margin-left: 10px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background-color: #eaeaea;
+    border: none;
+    outline: none;
+    border: 2px solid #eaeaea;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #888;
+}
+
+.wrapper .forgot {
+    font-size: 14px;
+    margin: 10px 0;
+    text-align: right;
+}
+
+.wrapper .forgot a {
+    text-decoration: none;
+    color: #000;
+}
+
+.wrapper .forgot a:hover {
+    text-decoration: underline;
+}
+
+.wrapper .login {
+    width: 100%;
+    height: 50px;
+    background: #35393c;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-logo{
+    width:180px;
+    position:absolute;
+    margin-bottom:44rem;
+    margin-left:13rem;
+    bottom:0;
+}
+
+.wrapper .register-link {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.register-link button {
+    width: 150px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #5da399;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.host-click-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.host-click-login a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+}
+
+.host-click-login a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,64 @@
+.host-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #35393c;
+    font-family: "Outfit", serif;
+    color: white;
+    font-weight: 700;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.host-menu-functions{
+    width:80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.host-menu-ul{
+    gap:40px;
+}
+
+.host-menu-h1{
+    margin-top:6rem;
+}
+
+.right-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.account-info {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture-menu {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 25px;
+}
+
+.drop-content-event-host {
+    position: absolute;
+    background-color: transparent;
+    z-index: 1000;
+    margin-top: 90px;
+    border-radius: 5px;
+}
+
+.account-info span{
+    text-align: center;
+}

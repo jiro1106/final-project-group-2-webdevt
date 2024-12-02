@@ -1,0 +1,107 @@
+.title-card-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column; /* Stack header and cards */
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.services-header {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;  /* Center the header */
+  margin-bottom: 30px;  /* Adds spacing between header and cards */
+}
+
+.title-card-wrapper {
+  display: flex;
+  justify-content: center; /* Center the cards horizontally */
+  align-items: center;
+  gap: 140px;
+  flex-wrap: nowrap;
+  padding: 0;
+  width: 100%;
+}
+
+.title-card {
+  border: 2px solid #397266;
+  border-radius: 1.3rem;
+  width: 15rem;
+  height: 22rem;
+  text-align: center;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for scaling and shadow */
+}
+
+.title-card:hover {
+  transform: scale(1.1); /* Enlarge the card on hover */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow for better effect */
+}
+
+.title-card h1 {
+  font-size: 16px;
+  margin: 0;
+  z-index: 1;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.title-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 1.3rem;
+}
+
+.card-birthdays {
+  background-image: url('../assets/birthday.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.card-corporate {
+  background-image: url('../assets/corpoevent.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.card-wedding {
+  background-image: url('../assets/weddings.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.card-anniversaries {
+  background-image: url('../assets/anniversaries.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.card-social {
+  background-image: url('../assets/babyshower.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .title-card {
+      width: 150px;
+      height: 200px;
+  }
+
+  .title-card h1 {
+      font-size: 14px;
+  }
+}
