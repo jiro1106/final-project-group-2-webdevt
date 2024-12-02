@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/ProposedEvents.css";
+import "../css/AdminProposedEvents.css";
 
-const ProposedEvents = () => {
+const AdminProposedEvents = () => {
   const [pendingEvents, setPendingEvents] = useState([]);
   const navigate = useNavigate();
 
@@ -68,4 +68,4 @@ const ProposedEvents = () => {
   );
 };
 
-export default ProposedEvents;
+export default AdminProposedEvents;

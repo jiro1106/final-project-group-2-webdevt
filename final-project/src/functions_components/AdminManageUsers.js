@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../css/ManageUsers.css";
+import "../css/AdminManageUsers.css";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
@@ -32,4 +32,4 @@ const ManageUsers = () => {
   );
 };
 
-export default ManageUsers;
+export default AdminManageUsers;

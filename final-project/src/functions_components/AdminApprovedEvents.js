@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../functions_css/AdminApprovedEvents.css?v=1.0";
 
-const ApprovedEvents = () => {
+const AdminApprovedEvents = () => {
   const [approvedEvents, setApprovedEvents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentEvent, setCurrentEvent] = useState(null);
@@ -66,7 +66,7 @@ const ApprovedEvents = () => {
               <p><strong>Location:</strong> {event.location}</p>
               <p><strong>Description:</strong> {event.description}</p>
               <p><strong>Price:</strong> ₱{event.price}</p>
-              <p><strong>Created By:</strong> {event.createdBy.firstName} {event.createdBy.lastName}</p>
+              <p><strong>Created By:</strong> {event.createdBy.firstName} {event.createdBy.lastName} ({event.createdBy.email})</p>
 
               <div className="approved-action-buttons">
                 <button className="approved-edit-button" onClick={() => handleEdit(event)}>Edit</button>
@@ -160,4 +160,4 @@ const ApprovedEvents = () => {
   );
 };
 
-export default ApprovedEvents;
+export default AdminApprovedEvents;
