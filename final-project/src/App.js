@@ -20,6 +20,9 @@ import ManageEvent from './functions_components/EventHostManageEvents';
 import FindEvent from './functions_components/UserFindEvent';
 import ViewUpcomingEvent from './functions_components/UserViewUpcomingEvent';
 
+import ForgotPasswordHost from './functions_components/forgotPasswordHost';
+import ForgotPasswordUser  from './functions_components/forgotPasswordUser';
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -36,6 +39,8 @@ function App() {
          <Route path='/event-host' element={<EventHostLogin/>}/>
          <Route path='/CreateForm' element={<CreateForm/>}/>
          <Route path='/CreateFormUser' element={<CreateFormUser/>}/>
+         <Route path="/forgot-password-host" element={<ForgotPasswordHost />} />
+          <Route path="/forgot-password-user" element={<ForgotPasswordUser  />} />
          <Route
           path="/admin"
           element={isLoggedIn ? <Navigate to="/dashboard" /> : <LoginPage onLogin={() => setIsLoggedIn(true)} />}
