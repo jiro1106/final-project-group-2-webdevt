@@ -32,42 +32,37 @@ const CreateFormUser  = () => {
             return;
         }
     
+        const accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+        const existingAccount = accounts.find(acc => acc.email === formData.email);
+    
+        if (existingAccount) {
+            setError('An account with this email already exists. Please use a different email.');
+            setTimeout(() => setError(''), 2000);
+            return;
+        }
+    
+        // Create the account object to store in local storage
+        const newAccount = { 
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email, 
+            password: formData.password 
+        };
+    
+        // If there's a profile picture, handle it
         if (profilePicture) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                const accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
-                const existingAccount = accounts.find(acc => acc.email === formData.email);
-    
-                if (existingAccount) {
-                    setError('An account with this email already exists. Please use a different email.');
-                    setTimeout(() => setError(''), 2000);
-                    return;
-                }
-    
-                accounts.push({ 
-                    email: formData.email, 
-                    password: formData.password, 
-                    profilePicture: reader.result
-                });
+                newAccount.profilePicture = reader.result; // Add profile picture to the account object
+                accounts.push(newAccount);
                 localStorage.setItem('userAccounts', JSON.stringify(accounts));
                 alert('Account created successfully!');
                 navigate('/user');
             };
             reader.readAsDataURL(profilePicture);
         } else {
-            const accounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
-            const existingAccount = accounts.find(acc => acc.email === formData.email);
-    
-            if (existingAccount) {
-                setError('An account with this email already exists. Please use a different email.');
-                setTimeout(() => setError(''), 2000);
-                return;
-            }
-    
-            accounts.push({ 
-                email: formData.email, 
-                password: formData.password 
-            });
+            // If no profile picture, just store the account
+            accounts.push(newAccount);
             localStorage.setItem('userAccounts', JSON.stringify(accounts));
             alert('Account created successfully!');
             navigate('/user');
