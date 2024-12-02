@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../functions_css/UserFindEvent.css';
 import UserMenu from './UserMenu';
+import userThumbnail from '../assets/userthumbnail.jpeg';
 
 const UserFindEvent = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    const currentUserEmail = localStorage.getItem('currentUser  Email');
+    const currentUserEmail = localStorage.getItem('currentUser Email');
     const approvedEvents = JSON.parse(localStorage.getItem('approvedEvents')) || [];
     const userApprovedEvents = approvedEvents.filter(
       (event) => event.accountId === currentUserEmail || event.createdBy.email === currentUserEmail
@@ -15,8 +16,23 @@ const UserFindEvent = () => {
     setEvents(userApprovedEvents); // Only set approved events for the current user
   }, []);
 
-  const handleRegister = (eventTitle) => {
-    alert(`You have registered for the event: ${eventTitle}`);
+  const handleRegister = (event) => {
+    // Retrieve the existing registered events from local storage
+    const registeredEvents = JSON.parse(localStorage.getItem('registeredEvents')) || [];
+
+    // Check if the event is already registered
+    const isAlreadyRegistered = registeredEvents.some((e) => e.title === event.title);
+
+    if (isAlreadyRegistered) {
+      alert(`You have already registered for the event: ${event.title}`);
+      return;
+    }
+
+    // Add the new event to the registered events array
+    const updatedRegisteredEvents = [...registeredEvents, event];
+    localStorage.setItem('registeredEvents', JSON.stringify(updatedRegisteredEvents));
+
+    alert(`You have registered for the event: ${event.title}`);
   };
 
   return (
@@ -24,6 +40,13 @@ const UserFindEvent = () => {
       <header className="App-header">
         <UserMenu />
       </header>
+      <div className="thumbnail-section">
+        <img src={userThumbnail} alt="thumbnail" className="user-thumbnail"/>
+        <div className="overlay-items">
+          <h1 className="user-openingtext">BOOK NOW</h1>
+          <button className="btn-findEvent">FIND EVENTS</button>
+        </div>
+      </div>
       <h2 className="user-findEvent-h2">Manage Events</h2>
       <div className="event-cards-container">
         {events.length === 0 ? (
@@ -44,7 +67,7 @@ const UserFindEvent = () => {
                 <p>
                   <strong>End:</strong> {event.endDate} {event.endTime}
                 </p>
-                <button className="event-card-button" onClick={() => handleRegister(event.title)}>
+                <button className="event-card-button" onClick={() => handleRegister(event)}>
                   Register
                 </button>
               </div>
